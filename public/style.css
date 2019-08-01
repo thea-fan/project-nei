@@ -1,14 +1,91 @@
 body{
-	background-image: url('background.jpeg');
-	background-size: cover;
 	font-family: 'Hind Madurai', sans-serif;
-	height: -webkit-fill-available;
+}
+
+header {
+ position: relative;
+ background-color: black;
+ height: 75vh;
+ min-height: 25rem;
+ width: 100%;
+ overflow: hidden;
+}
+
+header video {
+ position: absolute;
+ top: 50%;
+ left: 50%;
+ min-width: 100%;
+ min-height: 100%;
+ width: auto;
+ height: auto;
+ z-index: 0;
+ -ms-transform: translateX(-50%) translateY(-50%);
+ -moz-transform: translateX(-50%) translateY(-50%);
+ -webkit-transform: translateX(-50%) translateY(-50%);
+ transform: translateX(-50%) translateY(-50%);
+}
+
+header .container {
+ position: relative;
+ z-index: 2;
+}
+
+header .overlay {
+ position: absolute;
+ top: 0;
+ left: 0;
+ height: 100%;
+ width: 100%;
+ background-color: black;
+ opacity: 0.5;
+ z-index: 1;
+}
+
+.centered{
+	justify-content: center;
+	text-align: center;
+}
+
+.card a{
+	text-decoration: none;
+	color: black;
+}
+
+.category-card{
+	height: 10rem;
+	margin: 10px;
+
+}
+
+.account-btn{
+	margin: auto 1rem;
+}
+
+
+.section-title{
+	margin-top: 2rem;
+	margin-bottom: 1rem;
+}
+
+.container{
+	min-height: -webkit-fill-available;
+	/*min-width: 90%;*/
+}
+
+.activity-type{
+	font-weight: bold;
+	text-transform: uppercase;
+}
+
+.content{
+	margin-top: 53px;
 }
 
 .bg-light{
-	background: rgba(3, 169, 244, 0.12) !important;
+	background: white !important;
 	padding: 0 16px;
-	margin-bottom: 1rem;
+	border-bottom: 1px solid #ece7e7;
 }
 
 a.navbar-brand{
@@ -44,11 +121,47 @@ a.navbar-brand{
   -webkit-text-fill-color: transparent;
 }
 
-textarea{
-	margin-bottom: 1rem;
+
+.footer-copyright{
+	margin-top: 2rem;
+	background-color: black;
+	color: white;
 }
 
-.page-footer{
-	margin-top: 2rem;
-	bottom:0;
+
+
+.myButton {
+	-moz-box-shadow: 3px 4px 0px 0px #8a2a21;
+	-webkit-box-shadow: 3px 4px 0px 0px #8a2a21;
+	box-shadow: 3px 4px 0px 0px #8a2a21;
+	background-color:#eb594c;
+	-moz-border-radius:13px;
+	-webkit-border-radius:13px;
+	border-radius:13px;
+	display:inline-block;
+	cursor:pointer;
+	color:#ffffff;
+	font-family:Arial;
+	font-size:18px;
+	padding:7px 20px;
+	text-decoration:none;
+	text-shadow:0px 1px 0px #810e05;
+}
+.myButton:hover {
+	background-color:#e6a6b3;
+}
+.myButton:active {
+	position:relative;
+	top:1px;
+}
+
+
+
+@media (pointer: coarse) and (hover: none) {
+  header {
+    background: url('https://source.unsplash.com/XT5OInaElMw/1600x900') black no-repeat center center scroll;
+  }
+  header video {
+    display: none;
+  }
 }

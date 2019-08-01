@@ -13,15 +13,17 @@ module.exports = (app, allModels) => {
    */
 
   // require the controller
-  const tweedrController = require('./controllers/tweedr')(allModels);
+  const neiController = require('./controllers/nei')(allModels);
 
-    app.post('/login', tweedrController.loginPost);
-    app.get('/login', tweedrController.login);
-    app.post('/register', tweedrController.registerPost);
-    app.get('/register', tweedrController.register);
-    app.post('/home', tweedrController.homePost);
-    app.get('/home', tweedrController.home);
-    app.get('/logout', tweedrController.logout);
-    app.get('/', tweedrController.root);
+    app.post('/login', neiController.loginPost);
+    app.get('/login', neiController.login);
+    app.post('/register', neiController.registerPost);
+    app.get('/register', neiController.register);
+    app.get('/profile', neiController.profile);
+    app.post('/new', neiController.newPost);
+    app.get('/new', neiController.new);
+    app.get('/home', neiController.home);
+    app.get('/logout', neiController.logout);
+    app.get('/', neiController.root);
 
 };

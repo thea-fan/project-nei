@@ -6,6 +6,7 @@ class Layout extends React.Component {
         <html>
             <head>
             <link href="https://fonts.googleapis.com/css?family=Hind+Madurai|Righteous&display=swap" rel="stylesheet"/>
+            <link rel="stylesheet" href="https://www.meetup.com/mu_static/en-US/main.6e568a31.css"/>
             <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css"/>
             <meta charset="utf-8"/>
             <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no"/>
@@ -17,12 +18,12 @@ class Layout extends React.Component {
 
             <body>
 
-            <nav class="navbar navbar-expand-lg navbar-light bg-light">
+            <nav class="fixed-top navbar navbar-expand-lg navbar-light bg-light">
               <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarTogglerDemo03" aria-controls="navbarTogglerDemo03" aria-expanded="false" aria-label="Toggle navigation">
                 <span class="navbar-toggler-icon"></span>
               </button>
 
-                  <a class="navbar-brand" href="/"><div class="main-icon"/>tweedr</a>
+                  <a class="navbar-brand" href="/home"><div class="main-icon"/>nēi</a>
                   <div class="collapse navbar-collapse" id="navbarTogglerDemo03">
 
 
@@ -40,19 +41,10 @@ class Layout extends React.Component {
                     </ul>
                   </div>
                 </nav>
-
-                <div class="container">
-
-                    {this.props.children    }
-
+                {this.props.children    }
+                <div class="col-12 footer-copyright text-center py-3">© 2019 Copy not righted
+                    <a href="/"> nēi</a>
                 </div>
-
-                <footer class="page-footer font-small">
-                  <div class="footer-copyright text-center py-3">© 2019 Copy not righted:
-                    <a href="/recipes"> TWEEDR</a>
-                  </div>
-
-                </footer>
             </body>
         </html>
     )

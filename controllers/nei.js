@@ -1,5 +1,5 @@
 var sha256 = require('js-sha256');
-const SALT = "Tunr assignment zomg";
+const SALT = "project two gogogo";
 const cookieParser = require('cookie-parser')
 
 module.exports = (db) => {
@@ -12,7 +12,7 @@ module.exports = (db) => {
 
 //app.GET (register)
     let registerController = (request, response) => {
-        response.render('tweedr/register');
+        response.render('register');
     };
 
 //app.POST (register)
@@ -22,7 +22,7 @@ module.exports = (db) => {
 
         request.body.password = hashedPassword;
 
-        db.tweedr.registerUser(request.body, (err, result) => {
+        db.nei.registerUser(request.body, (err, result) => {
             if (err) {
                 response.send(err)
 
@@ -33,14 +33,14 @@ module.exports = (db) => {
 
                     let loggedInCookie = sha256( user_id + 'logged_id' + SALT );
 
-                    response.cookie('user_name', result.rows[0].name);
+                    response.cookie('user_name', result.rows[0].username);
                     response.cookie('loggedIn', loggedInCookie);
                     response.cookie('user_id', user_id);
 
                     response.redirect('/home');
 
                 } else {
-                    response.render('tweedr/usernameTaken');
+                    response.render('usernameTaken');
                 }
             }
         });
@@ -48,7 +48,7 @@ module.exports = (db) => {
 
 //app.GET (login)
     let loginController = (request, response) => {
-        response.render('tweedr/login');
+        response.render('login');
     };
 
 //app.POST (login)
@@ -57,7 +57,7 @@ module.exports = (db) => {
 
         request.body.password = hashedPassword;
 
-        db.tweedr.loginUser(request.body, (err, result) => {
+        db.nei.loginUser(request.body, (err, result) => {
             if (err) {
                 response.send(err)
 
@@ -68,14 +68,14 @@ module.exports = (db) => {
 
                     let loggedInCookie = sha256( user_id + 'logged_id' + SALT );
 
-                    response.cookie('user_name', result.rows[0].name);
+                    response.cookie('user_name', result.rows[0].username);
                     response.cookie('loggedIn', loggedInCookie);
                     response.cookie('user_id', user_id);
 
                     response.redirect('/home');
 
                 } else {
-                    response.render('tweedr/wrongPwd');
+                    response.render('wrongPwd');
                 }
             }
         });
@@ -84,58 +84,97 @@ module.exports = (db) => {
 //app.GET (home - write new tweed)
     let homeController = (request, response) => {
 
-        if( request.cookies.loggedIn === undefined || request.cookies.loggedIn === "nahh" ){
-            response.render('/');
+        if( request.cookies.loggedIn === undefined ){
+            response.redirect('/');
 
         }else{
 
-            db.tweedr.showTweed(request.body, (err, result) => {
+            db.nei.showActivity(request.body, (err, result) => {
                 if (err) {
                     response.send(err)
                 }
 
                 else {
                     let data = {
-                        allTweeds : result.rows
+                        allActivities : result.rows
                     }
-                    response.render('tweedr/home', data);
+                    response.render('home', data);
                 }
             });
         };
     };
 
-//app.POST (home - post new tweed)
-    let homePostController = (request, response) =>{
+//app.GET (user profile)
+    let profileController = (request, response) => {
+        if( request.cookies.loggedIn === undefined ){
+            response.render('plsLogin');
 
-        db.tweedr.postTweed(request.body, request.cookies, (err, result) => {
+        }else{
+            db.nei.userProfile(request.body, request.cookies, (err, result) => {
+                if (err) {
+                    response.send(err)
+                }
+
+                else {
+
+                    let data = {
+                        userInfo : request.cookies,
+                        activityLog : null
+                    }
+
+                    response.render('profile', data);
+                }
+            });
+        };
+    };
+
+//app.GET (new - post new activity)
+    let newController = (request, response) => {
+        if( request.cookies.loggedIn === undefined ){
+            response.render('plsLogin');
+
+        }else{
+            response.render('newActivity');
+        }
+    };
+
+//app.POST (new - post new activity)
+    let newPostController = (request, response) =>{
+
+        db.nei.postActivity(request.body, request.cookies, (err, result) => {
             if (err) {
                 response.send(err)
 
             } else {
-                response.redirect('/home')
+                response.redirect('/profile')
             };
         });
     };
 
 //app.GET (default home - not login)
     let rootController = (request, response) => {
-        db.tweedr.showTweed(request.body, (err, result) => {
-            if (err) {
-                response.send(err)
-            }
+        if( request.cookies.loggedIn !== undefined ){
+            response.redirect('/home');
 
-            else {
-                let data = {
-                    allTweeds : result.rows
+        }else{
+            db.nei.showActivity(request.body, (err, result) => {
+                if (err) {
+                    response.send(err)
                 }
-                response.render('tweedr/root', data);
-            }
-        });
+
+                else {
+                    let data = {
+                        allActivities : result.rows
+                    }
+                    response.render('root', data);
+                }
+            });
+        }
     };
 
 //app.GET (logout)
     let logoutController = (request, response) => {
-        response.cookie('loggedIn', "nahh");
+        response.clearCookie('loggedIn');
         response.redirect('/')
     };
 
@@ -151,8 +190,10 @@ module.exports = (db) => {
     loginPost: loginPostController,
     register: registerController,
     registerPost: registerPostController,
+    profile: profileController,
     home: homeController,
-    homePost: homePostController,
+    new: newController,
+    newPost: newPostController,
     logout: logoutController,
     root: rootController,
   };

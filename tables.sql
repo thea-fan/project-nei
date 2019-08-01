@@ -2,11 +2,22 @@ CREATE TABLE IF NOT EXISTS users (
     id SERIAL PRIMARY KEY,
     name TEXT,
     password TEXT,
-	  created_at DATE DEFAULT now()
+    postalCode INTEGER
 );
 
-CREATE TABLE IF NOT EXISTS tweeds (
+CREATE TABLE IF NOT EXISTS activity (
     id SERIAL PRIMARY KEY,
-    content TEXT,
-    user_id INTEGER
+    host_id INTEGER,
+    type TEXT,
+    name TEXT,
+    max_pax INTEGER,
+    created_at DATE DEFAULT now(),
+    event_date DATE,
+    active BOOLEAN DEFAULT true
+);
+
+CREATE TABLE IF NOT EXISTS respondent (
+	id SERIAL PRIMARY KEY,
+  activity_id INTEGER,
+  respondent_id INTEGER
 );

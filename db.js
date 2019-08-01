@@ -10,8 +10,6 @@
  * ===================================================
  */
 
-
-
 const pg = require('pg');
 const url = require('url');
 
@@ -35,7 +33,7 @@ if( process.env.DATABASE_URL ){
   configs = {
     user: 'admin',
     host: '127.0.0.1',
-    database: 'tunr_db',
+    database: 'nei',
     port: 5432
   };
 }
@@ -62,10 +60,8 @@ pool.on('error', function (err) {
  */
 
 
-const alltweedrModelsFunction = require('./models/tweedr');
-
-const tweedrModelsObject = alltweedrModelsFunction( pool );
-
+const allNeiModelsFunction = require('./models/nei');
+const neiModelsObject = allNeiModelsFunction( pool );
 
 
 /*
@@ -90,10 +86,5 @@ module.exports = {
   // get a reference to end the connection pool at server end
   pool:pool,
 
-  /*
-   * ADD APP MODELS HERE
-   */
-
-  // users: userModelsObject,
-  tweedr: tweedrModelsObject
+  nei: neiModelsObject
 };

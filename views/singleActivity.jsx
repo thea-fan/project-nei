@@ -1,7 +1,7 @@
 var React = require('react');
 var Layout = require('./components/layout');
 
-class Home extends React.Component {
+class singleActivity extends React.Component {
   render() {
     let activity = this.props.specificActivity[0];
     let eventDate = activity.event_date;
@@ -9,9 +9,16 @@ class Home extends React.Component {
     const months = ["Jan", "Feb", "Mar","Apr", "May", "Jun", "Jul", "Aug", "Sep", "Oct", "Nov", "Dec"];
     let date = eventDate.getDate() + " " + months[eventDate.getMonth()];
 
-    const respondents = this.props.specificActivity.map(activity =>{
-        return (<li>{activity.respondent_name}</li>);
-    });
+    let respondents = "";
+    if (this.props.specificActivity[0].respondent_id === null) {
+        respondents = <li>No neighbour has responded yet. <br/> Why not be the first to do so?</li>;
+    }
+    else if (this.props.specificActivity) {
+        respondents = this.props.specificActivity.map(activity =>{
+            return (<li>{activity.respondent_name}</li>);
+        });
+    }
+
 
     return (
         <Layout>
@@ -57,4 +64,4 @@ class Home extends React.Component {
   }
 }
 
-module.exports = Home;
+module.exports = singleActivity;

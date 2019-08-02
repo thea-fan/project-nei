@@ -104,6 +104,21 @@ module.exports = (db) => {
         };
     };
 
+//app.DELETE (profile - delete attending activities)
+    let deleteAttendingController = (request, response) => {
+
+        db.nei.deleteAttending(request.body, request.cookies, (err, result) => {
+            if (err) {
+                response.send(err)
+            }
+
+            else {
+                response.redirect('/profile');
+            }
+        });
+
+    };
+
 //app.GET (activity - view respective activity)
     let activityController = (request, response) => {
         let activityId = parseInt(request.params.id);
@@ -116,6 +131,7 @@ module.exports = (db) => {
                 let data = {
                     specificActivity : result.rows
                 }
+
                 response.render('singleActivity',data);
             }
         });
@@ -138,20 +154,20 @@ module.exports = (db) => {
 
 //app.GET (user profile)
     let profileController = (request, response) => {
+
         if( request.cookies.loggedIn === undefined ){
             response.render('plsLogin');
 
         }else{
-            db.nei.singleActivity(request.body, request.cookies, (err, result) => {
+            db.nei.attending(request.body, request.cookies, (err, result) => {
                 if (err) {
                     response.send(err)
                 }
 
                 else {
-
                     let data = {
                         userInfo : request.cookies,
-                        activityInfo: result.rows
+                        attending : result.rows,
                     }
                     response.render('profile', data);
                 }
@@ -223,6 +239,7 @@ module.exports = (db) => {
     registerPost: registerPostController,
     profile: profileController,
     home: homeController,
+    deleteAttending: deleteAttendingController,
     attend: attendController,
     activity: activityController,
     new: newController,

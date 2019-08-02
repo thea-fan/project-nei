@@ -55,20 +55,21 @@ module.exports = (dbPoolInstance) => {
         });
     }
 
-    // let userProfile = (profile, cookies, callback) => {
-    //     let query = "SELECT * FROM activity INNER JOIN users ON users.id = host_id WHERE users.id = $1";
-    //     let values = [cookies.user_id]
+    let attending = (profile, cookies, callback) => {
+        let query = "select * from respondent inner join activity on activity_id = activity.id inner join users on host_id = users.id where respondent_id = $1 and active = true order by event_date asc";
 
-    //     dbPoolInstance.query(query, values, (error, result) => {
+        let values = [cookies.user_id];
 
-    //         if( error ){
-    //             callback(error, null);
+        dbPoolInstance.query(query, values, (error, result) => {
 
-    //         } else {
-    //             callback(null, result);
-    //          }
-    //     });
-    // }
+            if( error ){
+                callback(error, null);
+
+            } else {
+                callback(null, result);
+             }
+        });
+    }
 
 
     let activityOverview = (activity, callback) => {
@@ -86,9 +87,25 @@ module.exports = (dbPoolInstance) => {
     }
 
     let singleActivity = (activity, callback) => {
-        let query = "select * from respondent inner join activity on activity_id = activity.id inner join users on host_id = users.id where activity.id = $1";
+        let query = "select * from activity left join respondent on activity_id = activity.id inner join users on host_id = users.id where activity.id = $1";
 
         let values = [activity];
+
+        dbPoolInstance.query(query, values, (error, result) => {
+
+            if( error ){
+                callback(error, null);
+
+            } else {
+                callback(null, result);
+             }
+        });
+    }
+
+    let deleteAttending = (activity, cookies, callback) => {
+        let query = "delete from respondent where respondent_id = $1 and activity_id = $2 returning *";
+
+        let values = [cookies.user_id, activity.activity_id];
 
         dbPoolInstance.query(query, values, (error, result) => {
 
@@ -118,7 +135,7 @@ module.exports = (dbPoolInstance) => {
     }
 
     let showActivity = (activity, callback) => {
-        let query = "SELECT * FROM activity INNER JOIN users ON users.id = host_id WHERE active = true ORDER BY event_date ";
+        let query = "SELECT activity.id, host_id, type, name, max_pax, created_at, event_date, active, username FROM activity INNER JOIN users ON users.id = host_id WHERE active = true ORDER BY event_date ASC";
 
         dbPoolInstance.query(query, (error, result) => {
 
@@ -150,9 +167,10 @@ module.exports = (dbPoolInstance) => {
     postActivity,
     showActivity,
     singleActivity,
+    deleteAttending,
     attendActivity,
     activityOverview,
-    // userProfile,
+    attending,
     registerUser,
     loginUser,
   };

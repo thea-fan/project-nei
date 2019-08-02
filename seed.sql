@@ -1,3 +1,21 @@
+insert into users (username, password, postalcode) values ('Joji','2914babd29ac15c88172f3c0599687fc3014c3a26e0ad6b5a6b2bfed32bd19e9', 469449);
+
+insert into users (username, password, postalcode) values ('ppp','000', 400018);
+
+insert into users (username, password, postalcode) values ('lll','000', 400018);
+
+insert into users (username, password, postalcode) values ('iii','000', 400020);
+
+insert into users (username, password, postalcode) values ('tltl','000', 469449);
+
+insert into users (username, password, postalcode) values ('trtr','000', 678989);
+
+insert into users (username, password, postalcode) values ('kkk','000', 544324);
+
+insert into users (username, password, postalcode) values ('rara','000', 900013);
+
+
+
 insert into activity (host_id, type, name, max_pax, event_date) values (1, 'food', 'eat dinner together', 8, '2019-09-01');
 
 insert into activity (host_id, type, name, max_pax, event_date) values (1, 'food', 'cook italian tgt', 3, '2019-09-02');

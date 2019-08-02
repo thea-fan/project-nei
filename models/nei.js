@@ -55,9 +55,40 @@ module.exports = (dbPoolInstance) => {
         });
     }
 
-    let userProfile = (profile, cookies, callback) => {
-        let query = "SELECT * FROM activity INNER JOIN users ON users.id = host_id WHERE users.id = $1";
-        let values = [cookies.user_id]
+    // let userProfile = (profile, cookies, callback) => {
+    //     let query = "SELECT * FROM activity INNER JOIN users ON users.id = host_id WHERE users.id = $1";
+    //     let values = [cookies.user_id]
+
+    //     dbPoolInstance.query(query, values, (error, result) => {
+
+    //         if( error ){
+    //             callback(error, null);
+
+    //         } else {
+    //             callback(null, result);
+    //          }
+    //     });
+    // }
+
+
+    let activityOverview = (activity, callback) => {
+        let query = "SELECT * FROM activity INNER JOIN users ON users.id = host_id WHERE active = true ORDER BY event_date ASC limit 6 ";
+
+        dbPoolInstance.query(query, (error, result) => {
+
+            if( error ){
+                callback(error, null);
+
+            } else {
+                callback(null, result);
+             }
+        });
+    }
+
+    let singleActivity = (activity, callback) => {
+        let query = "select * from respondent inner join activity on activity_id = activity.id inner join users on host_id = users.id where activity.id = $1";
+
+        let values = [activity];
 
         dbPoolInstance.query(query, values, (error, result) => {
 
@@ -70,22 +101,24 @@ module.exports = (dbPoolInstance) => {
         });
     }
 
-    // let distinctCategory = (category, callback) => {
-    //     let query = "SELECT DISTINCT type FROM activity;";
+    let attendActivity = (activity, cookies, callback) => {
+        let query = "insert into respondent (activity_id, respondent_id, respondent_name) values ($1, $2, $3) returning *";
 
-    //     dbPoolInstance.query(query, (error, result) => {
+        let values = [activity, cookies.user_id, cookies.user_name];
 
-    //         if( error ){
-    //             callback(error, null);
+        dbPoolInstance.query(query, values, (error, result) => {
 
-    //         } else {
-    //             callback(null, result);
-    //          }
-    //     });
-    // }
+            if( error ){
+                callback(error, null);
+
+            } else {
+                callback(null, result);
+             }
+        });
+    }
 
     let showActivity = (activity, callback) => {
-        let query = "SELECT * FROM activity INNER JOIN users ON users.id = host_id WHERE active = true ORDER BY event_date ASC limit 6 ";
+        let query = "SELECT * FROM activity INNER JOIN users ON users.id = host_id WHERE active = true ORDER BY event_date ";
 
         dbPoolInstance.query(query, (error, result) => {
 
@@ -116,7 +149,10 @@ module.exports = (dbPoolInstance) => {
   return {
     postActivity,
     showActivity,
-    userProfile,
+    singleActivity,
+    attendActivity,
+    activityOverview,
+    // userProfile,
     registerUser,
     loginUser,
   };

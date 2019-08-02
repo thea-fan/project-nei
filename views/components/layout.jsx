@@ -24,9 +24,14 @@ class Layout extends React.Component {
               </button>
 
                   <a class="navbar-brand" href="/home"><div class="main-icon"/>nēi</a>
+
+
                   <div class="collapse navbar-collapse" id="navbarTogglerDemo03">
-
-
+                  <ul class="navbar-nav mr-auto mt-2 mt-lg-0">
+                    <li class="nav-item">
+                    <a class="nav-link" href="/profile">Profile</a>
+                    </li>
+                    </ul>
                   <ul class="navbar-nav mr-auto mt-2 mt-lg-0">
                   <li class="nav-item dropdown">
                     <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">

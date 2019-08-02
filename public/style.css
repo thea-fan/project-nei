@@ -47,9 +47,18 @@ header .overlay {
 	text-align: center;
 }
 
-.card a{
+.card a, li a{
 	text-decoration: none;
 	color: black;
+}
+
+.home-activity-name{
+	font-size: 25px;
+
+}
+
+.home-event-list{
+	border: 1px solid lightgray;
 }
 
 .category-card{

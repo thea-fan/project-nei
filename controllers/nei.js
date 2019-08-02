@@ -81,7 +81,7 @@ module.exports = (db) => {
         });
     };
 
-//app.GET (home - write new tweed)
+//app.GET (home - view all activities)
     let homeController = (request, response) => {
 
         if( request.cookies.loggedIn === undefined ){
@@ -104,13 +104,45 @@ module.exports = (db) => {
         };
     };
 
+//app.GET (activity - view respective activity)
+    let activityController = (request, response) => {
+        let activityId = parseInt(request.params.id);
+
+        db.nei.singleActivity(activityId, (err, result) => {
+            if (err) {
+                response.send(err)
+            }
+            else {
+                let data = {
+                    specificActivity : result.rows
+                }
+                response.render('singleActivity',data);
+            }
+        });
+    };
+
+//app.POST (attend activity)
+    let attendController = (request, response) => {
+
+        let activityId = parseInt(request.params.id);
+
+        db.nei.attendActivity(activityId, request.cookies, (err, result) => {
+            if (err) {
+                response.send(err)
+            }
+            else {
+                response.redirect('/profile')
+            }
+        });
+    };
+
 //app.GET (user profile)
     let profileController = (request, response) => {
         if( request.cookies.loggedIn === undefined ){
             response.render('plsLogin');
 
         }else{
-            db.nei.userProfile(request.body, request.cookies, (err, result) => {
+            db.nei.singleActivity(request.body, request.cookies, (err, result) => {
                 if (err) {
                     response.send(err)
                 }
@@ -119,9 +151,8 @@ module.exports = (db) => {
 
                     let data = {
                         userInfo : request.cookies,
-                        activityLog : null
+                        activityInfo: result.rows
                     }
-
                     response.render('profile', data);
                 }
             });
@@ -157,7 +188,7 @@ module.exports = (db) => {
             response.redirect('/home');
 
         }else{
-            db.nei.showActivity(request.body, (err, result) => {
+            db.nei.activityOverview(request.body, (err, result) => {
                 if (err) {
                     response.send(err)
                 }
@@ -192,6 +223,8 @@ module.exports = (db) => {
     registerPost: registerPostController,
     profile: profileController,
     home: homeController,
+    attend: attendController,
+    activity: activityController,
     new: newController,
     newPost: newPostController,
     logout: logoutController,

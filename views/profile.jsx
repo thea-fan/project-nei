@@ -12,7 +12,7 @@ class userProfile extends React.Component {
         <Layout>
              <div class = "container">
                 <div class = "content">
-                    <h1>{this.props.userInfo.user_name}</h1>
+                    <h1>Welcome, {this.props.userInfo.user_name}! </h1>
                 </div>
             </div>
         </Layout>

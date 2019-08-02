@@ -3,43 +3,50 @@ var Layout = require('./components/layout.jsx');
 
 class Home extends React.Component {
   render() {
+
+
     const activity = this.props.allActivities.map(activity =>{
-        console.log(activity);
+
+        let eventURL ="/activity/"+activity.id;
 
         let eventDate = activity.event_date;
         const months = ["Jan", "Feb", "Mar","Apr", "May", "Jun", "Jul", "Aug", "Sep", "Oct", "Nov", "Dec"];
-        let date = eventDate.getDate() + "-" + months[eventDate.getMonth()] + "-" + eventDate.getFullYear();
+        let date = eventDate.getDate() + " " + months[eventDate.getMonth()];
 
         return (
-
-
-            <div className = "single-tweed">
-                <p><span className = 'activity-type'>{activity.type}</span>   ==== {activity.name} on {date} - Post by {activity.username}</p>
-            </div>
+            <li class="home-event-list">
+                <a href={eventURL}>
+                    <div class="row">
+                        <div class="d-flex justify-content-center align-items-center col-2 text-uppercase font-weight-bold">
+                            {date}
+                        </div>
+                        <div class="col">
+                            <p class="text-uppercase font-weight-bold m-0">= {activity.type} =</p>
+                            <p class="home-activity-name text-uppercase font-weight-bold m-0">{activity.name}</p>
+                            <p class ="font-italic">Posted by: {activity.username}</p>
+                        </div>
+                    </div>
+                </a>
+            </li>
         )
     });
 
 
+
     return (
         <Layout>
-        <div class = "find-navbar-wrap">
-        <div id="findNavBar" class="find-navbar line">
-        <div class="unit size5of7">
-        </div>
-        </div>
-        </div>
            <div class = "container">
                 <div class = "content">
                     <h1>Home</h1>
                     <div class="form-group">
-                        <form action = '/new' method ="GET">
+                        <form action = '/activity/new' method ="GET">
                             <button type="submit" class="btn btn-outline-primary">Post New Activities</button>
                         </form>
                     </div>
                     <p className ="latest">Upcoming Activities </p>
-                    <div className = "display-tweeds">
+                    <ul className = "event-listing-container">
                         {activity}
-                    </div>
+                    </ul>
                 </div>
             </div>
         </Layout>

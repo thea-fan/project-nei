@@ -19,5 +19,6 @@ CREATE TABLE IF NOT EXISTS activity (
 CREATE TABLE IF NOT EXISTS respondent (
 	id SERIAL PRIMARY KEY,
   activity_id INTEGER,
-  respondent_id INTEGER
+  respondent_id INTEGER,
+  respondent_name TEXT
 );

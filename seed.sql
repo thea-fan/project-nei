@@ -17,47 +17,42 @@ insert into activity (host_id, type, name, max_pax, event_date) values (1, 'chil
 
 
 
-insert into respondent (activity_id, respondent_id) values (1, 2);
+insert into respondent (activity_id, respondent_id, respondent_name) values (1, 2, 'ppp');
 
-insert into respondent (activity_id, respondent_id) values (1, 3);
+insert into respondent (activity_id, respondent_id, respondent_name) values (1, 3, 'lll');
 
-insert into respondent (activity_id, respondent_id) values (1, 4);
+insert into respondent (activity_id, respondent_id, respondent_name) values (1, 4, 'iii');
 
-insert into respondent (activity_id, respondent_id) values (1, 5);
+insert into respondent (activity_id, respondent_id, respondent_name) values (1, 5, 'tltl');
 
-insert into respondent (activity_id, respondent_id) values (2, 3);
+insert into respondent (activity_id, respondent_id, respondent_name) values (2, 3, 'lll');
 
-insert into respondent (activity_id, respondent_id) values (2, 4);
+insert into respondent (activity_id, respondent_id, respondent_name) values (2, 4, 'iii');
 
-insert into respondent (activity_id, respondent_id) values (3, 1);
+insert into respondent (activity_id, respondent_id, respondent_name) values (3, 1, 'Joji');
 
-insert into respondent (activity_id, respondent_id) values (3, 4);
+insert into respondent (activity_id, respondent_id, respondent_name) values (3, 4, 'iii');
 
-insert into respondent (activity_id, respondent_id) values (4, 2);
+insert into respondent (activity_id, respondent_id, respondent_name) values (4, 2, 'ppp');
 
-insert into respondent (activity_id, respondent_id) values (5, 2);
+insert into respondent (activity_id, respondent_id, respondent_name) values (5, 2, 'ppp');
 
-insert into respondent (activity_id, respondent_id) values (5, 1);
+insert into respondent (activity_id, respondent_id, respondent_name) values (5, 1, 'Joji');
 
-insert into respondent (activity_id, respondent_id) values (5, 4);
+insert into respondent (activity_id, respondent_id, respondent_name) values (5, 4, 'iii');
 
-insert into respondent (activity_id, respondent_id) values (7, 3);
+insert into respondent (activity_id, respondent_id, respondent_name) values (7, 3, 'lll');
 
-insert into respondent (activity_id, respondent_id) values (7, 4);
+insert into respondent (activity_id, respondent_id, respondent_name) values (7, 4, 'iii');
 
-insert into respondent (activity_id, respondent_id) values (8, 3);
+insert into respondent (activity_id, respondent_id, respondent_name) values (8, 3, 'lll');
 
 
 
-//find respondents to activity by activity_name
-select users.name, activity.name from users
-inner join respondent on users.id = respondent_id
+
+select * from respondent
 inner join activity on activity_id = activity.id
-
-
-
-
-
+inner join users on host_id = users.id;
 
 
 

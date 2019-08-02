@@ -9,6 +9,9 @@
   "scripts": {
     "start": "node index.js"
   },
+  "engines" : {
+    "node" : "^12.6.0"
+  },
   "dependencies": {
     "cookie-parser": "^1.4.3",
     "express": "^4.16.3",

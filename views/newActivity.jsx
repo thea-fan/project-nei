@@ -8,7 +8,7 @@ class NewActivity extends React.Component {
          <div class = "container">
                 <div class = "content">
                     <h1> Add New activity! </h1>
-                    <form action ="/new" method ="POST">
+                    <form action ="/activity/new" method ="POST">
 
                         <h2>Activity Type</h2>
                         <input type="text" name="type" placeholder="Activity Type"/>

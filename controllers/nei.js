@@ -106,8 +106,9 @@ module.exports = (db) => {
 
 //app.DELETE (profile - delete attending activities)
     let deleteAttendingController = (request, response) => {
+        let activityId = parseInt(request.params.id);
 
-        db.nei.deleteAttending(request.body, request.cookies, (err, result) => {
+        db.nei.deleteAttending(activityId, request.cookies, (err, result) => {
             if (err) {
                 response.send(err)
             }
@@ -129,7 +130,8 @@ module.exports = (db) => {
             }
             else {
                 let data = {
-                    specificActivity : result.rows
+                    specificActivity : result.rows,
+                    Id : activityId
                 }
 
                 response.render('singleActivity',data);
@@ -167,7 +169,7 @@ module.exports = (db) => {
                 else {
                     let data = {
                         userInfo : request.cookies,
-                        attending : result.rows,
+                        attending : result.rows
                     }
                     response.render('profile', data);
                 }

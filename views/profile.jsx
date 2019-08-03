@@ -9,7 +9,7 @@ class userProfile extends React.Component {
 
     const attend = this.props.attending.map(activity =>{
         let eventURL = "/activity/" + activity.activity_id;
-        let url = "/activity/"+ activity.activity_id + "?_method=DELETE";
+        let deleteURL = "/activity/"+ activity.activity_id + "?_method=DELETE";
         let eventDate = activity.event_date;
         const months = ["Jan", "Feb", "Mar","Apr", "May", "Jun", "Jul", "Aug", "Sep", "Oct", "Nov", "Dec"];
         let date = eventDate.getDate() + " " + months[eventDate.getMonth()];
@@ -18,7 +18,7 @@ class userProfile extends React.Component {
             <li class="d-flex justify-content-between list-group-item">
                 <a href={eventURL}>{date} - {activity.name}
                 </a>
-                <form action ={url} method ="POST"><button type="submit" class="myButton">Oops I change my mind~</button>
+                <form action ={deleteURL} method ="POST"><button name = "activity_id" type="submit" class="myButton">Oops I change my mind~</button>
             </form>
             </li>
         );
@@ -31,6 +31,10 @@ class userProfile extends React.Component {
                 <div class = "content">
                     <h1>Welcome, {this.props.userInfo.user_name}! </h1>
                     <h2>Activities you are attending</h2>
+                    <ul class="list-group">
+                    {attend}
+                    </ul>
+                    <h2>Activities posted by you</h2>
                     <ul class="list-group">
                     {attend}
                     </ul>

@@ -5,7 +5,7 @@ class singleActivity extends React.Component {
   render() {
     let activity = this.props.specificActivity[0];
     let eventDate = activity.event_date;
-    let postURL = "/activity/"+activity.activity_id;
+    let postURL = "/activity/"+this.props.Id;
     const months = ["Jan", "Feb", "Mar","Apr", "May", "Jun", "Jul", "Aug", "Sep", "Oct", "Nov", "Dec"];
     let date = eventDate.getDate() + " " + months[eventDate.getMonth()];
 

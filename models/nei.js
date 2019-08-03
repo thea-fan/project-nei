@@ -105,7 +105,7 @@ module.exports = (dbPoolInstance) => {
     let deleteAttending = (activity, cookies, callback) => {
         let query = "delete from respondent where respondent_id = $1 and activity_id = $2 returning *";
 
-        let values = [cookies.user_id, activity.activity_id];
+        let values = [cookies.user_id, activity];
 
         dbPoolInstance.query(query, values, (error, result) => {
 

@@ -1,8 +1,14 @@
 var React = require('react');
-var Layout = require('./components/layout.jsx');
+var Layout = require('./components/rootLayout.jsx');
 
 class Root extends React.Component {
   render() {
+
+    if (this.props.status.loggedIn !== undefined ){
+        Layout = memberNav;
+    } else {
+        Layout = nonMemberNav;
+    }
 
     let typeArray = [];
     this.props.allActivities.map(activity => {
@@ -12,11 +18,11 @@ class Root extends React.Component {
 
     const type = typeArray.map(type =>{
         return(
-                 <div class = "category-card col-3 card card--hasShadow card--hasShadowPlusHover eventCard justify-content-center text-center ">
-                    <a href="#">
-                        <h1>{type}</h1>
-                    </a>
-                </div>
+             <div class = "category-card col-3 card card--hasShadow card--hasShadowPlusHover eventCard justify-content-center text-center ">
+                <a href="#">
+                    <h1>{type}</h1>
+                </a>
+            </div>
         )
     });
 
@@ -73,7 +79,7 @@ class Root extends React.Component {
                         <h2 class = "d-flex align-items-center m-0"> Upcoming Activities</h2>
                     </div>
                     <div class="col-6 d-flex align-items-center justify-content-end">
-                        <a href="#">See more</a>
+                        <a href="/home">See more</a>
                     </div>
                 </div>
                 <section class="rowWrapper">
@@ -97,7 +103,7 @@ class Root extends React.Component {
                     </div>
                 </div>
                 <section class="col d-flex flex-wrap justify-content-around">
-                    {type}
+                    {type}{type}{type}
                 </section>
             </div>
         </Layout>

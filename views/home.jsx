@@ -1,9 +1,16 @@
 var React = require('react');
-var Layout = require('./components/layout.jsx');
+var Layout;
+var memberNav = require('./components/layout.jsx');
+var nonMemberNav = require('./components/rootLayout.jsx');
 
 class Home extends React.Component {
   render() {
 
+    if (this.props.status.loggedIn !== undefined ){
+        Layout = memberNav;
+    } else {
+        Layout = nonMemberNav;
+    }
 
     const activity = this.props.allActivities.map(activity =>{
 
@@ -31,18 +38,10 @@ class Home extends React.Component {
         )
     });
 
-
-
     return (
         <Layout>
            <div class = "container">
                 <div class = "content">
-                    <h1>Home</h1>
-                    <div class="form-group">
-                        <form action = '/activity/new' method ="GET">
-                            <button type="submit" class="btn btn-outline-primary">Post New Activities</button>
-                        </form>
-                    </div>
                     <p className ="latest">Upcoming Activities </p>
                     <ul className = "event-listing-container">
                         {activity}

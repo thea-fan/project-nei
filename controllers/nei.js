@@ -84,24 +84,19 @@ module.exports = (db) => {
 //app.GET (home - view all activities)
     let homeController = (request, response) => {
 
-        if( request.cookies.loggedIn === undefined ){
-            response.redirect('/');
+        db.nei.showActivity(request.body, request.cookies, (err, result) => {
+            if (err) {
+                response.send(err)
+            }
 
-        }else{
-
-            db.nei.showActivity(request.body, (err, result) => {
-                if (err) {
-                    response.send(err)
+            else {
+                let data = {
+                    allActivities : result.rows,
+                    status: request.cookies
                 }
-
-                else {
-                    let data = {
-                        allActivities : result.rows
-                    }
-                    response.render('home', data);
-                }
-            });
-        };
+                response.render('home', data);
+            }
+        });
     };
 
 //app.DELETE (profile - delete attending activities)
@@ -172,14 +167,15 @@ module.exports = (db) => {
     let activityController = (request, response) => {
         let activityId = parseInt(request.params.id);
 
-        db.nei.singleActivity(activityId, (err, result) => {
+        db.nei.singleActivity(activityId, request.cookies, (err, result) => {
             if (err) {
                 response.send(err)
             }
             else {
                 let data = {
                     specificActivity : result.rows,
-                    Id : activityId
+                    Id : activityId,
+                    status : request.cookies
                 }
 
                 response.render('singleActivity',data);

@@ -1,6 +1,6 @@
 var React = require('react');
 
-class Layout extends React.Component {
+class rootLayout extends React.Component {
   render() {
     return(
         <html>
@@ -23,21 +23,22 @@ class Layout extends React.Component {
                 <div class = "d-flex justify-content-evenly">
                 <ul class="navbar-nav">
                   <li class="nav-item">
-                    <a class="nav-link mr-4" href="/home">Home</a>
+                    <a class="nav-link mr-4" href="/home">Events</a>
                   </li>
                 </ul>
                 <ul class="navbar-nav">
                   <li class="nav-item">
-                    <a class="nav-link mr-4" href="/register">Profile</a>
+                    <a class="nav-link mr-4" href="/login">Login</a>
                   </li>
                 </ul>
                 <ul class="navbar-nav">
                   <li class="nav-item">
-                    <a class="nav-link mr-4" href="/logout">Logout</a>
+                    <a class="nav-link" href="/register">Register</a>
                   </li>
                 </ul>
                 </div>
             </nav>
+
                 {this.props.children    }
                 <div class="col-12 footer-copyright text-center py-3">© 2019 Copy not righted
                     <a href="/"> nēi</a>
@@ -49,4 +50,4 @@ class Layout extends React.Component {
 }
 
 
-module.exports = Layout;
+module.exports = rootLayout;

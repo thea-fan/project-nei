@@ -149,7 +149,7 @@ module.exports = (dbPoolInstance) => {
         });
     }
 
-    let singleActivity = (activity, callback) => {
+    let singleActivity = (activity, cookies, callback) => {
         let query = "select * from activity left join respondent on activity_id = activity.id inner join users on host_id = users.id where activity.id = $1";
 
         let values = [activity];
@@ -197,7 +197,7 @@ module.exports = (dbPoolInstance) => {
         });
     }
 
-    let showActivity = (activity, callback) => {
+    let showActivity = (activity, cookies, callback) => {
         let query = "SELECT activity.id, host_id, type, name, max_pax, created_at, event_date, active, username FROM activity INNER JOIN users ON users.id = host_id WHERE active = true ORDER BY event_date ASC";
 
         dbPoolInstance.query(query, (error, result) => {

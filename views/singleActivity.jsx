@@ -1,8 +1,17 @@
 var React = require('react');
-var Layout = require('./components/layout');
+var React = require('react');
+var Layout;
+var memberNav = require('./components/layout.jsx');
+var nonMemberNav = require('./components/rootLayout.jsx');
 
 class singleActivity extends React.Component {
   render() {
+    if (this.props.status.loggedIn !== undefined ){
+        Layout = memberNav;
+    } else {
+        Layout = nonMemberNav;
+    }
+
     let activity = this.props.specificActivity[0];
     let eventDate = activity.event_date;
     let postURL = "/activity/"+this.props.Id;

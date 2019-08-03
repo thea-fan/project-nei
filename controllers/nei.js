@@ -120,6 +120,39 @@ module.exports = (db) => {
 
     };
 
+//app.PUT (Update posted activities)
+    let editPostPutController = (request, response) => {
+       let activityId = parseInt(request.params.id);
+
+        db.nei.submitEdit(request.body, activityId, request.cookies, (err, result) => {
+            if (err) {
+                response.send(err)
+
+            } else {
+                response.redirect("/profile");
+            }
+        });
+
+    };
+
+//app.GET (edit attending activities)
+    let editPostController = (request, response) => {
+       let activityId = parseInt(request.params.id);
+
+        db.nei.editActivity(activityId, request.cookies, (err, result) => {
+            if (err) {
+                response.send(err)
+
+            } else {
+                let data = {
+                    activityInfo: result.rows
+                }
+                response.render('editPosted', data);
+            }
+        });
+
+    };
+
 //app.GET (activity - view respective activity)
     let activityController = (request, response) => {
         let activityId = parseInt(request.params.id);
@@ -160,18 +193,25 @@ module.exports = (db) => {
         if( request.cookies.loggedIn === undefined ){
             response.render('plsLogin');
 
-        }else{
+        } else {
             db.nei.attending(request.body, request.cookies, (err, result) => {
                 if (err) {
-                    response.send(err)
-                }
+                    response.send(err);
 
-                else {
-                    let data = {
-                        userInfo : request.cookies,
-                        attending : result.rows
-                    }
-                    response.render('profile', data);
+                } else {
+                    db.nei.postedActivity(request.body, request.cookies, (err, result2) => {
+                        if (err) {
+                            response.send(err)
+
+                        } else {
+                            let data = {
+                                userInfo : request.cookies,
+                                attending : result.rows,
+                                posted: result2.rows
+                            };
+                            response.render('profile', data)
+                        }
+                    });
                 }
             });
         };
@@ -242,6 +282,8 @@ module.exports = (db) => {
     profile: profileController,
     home: homeController,
     deleteAttending: deleteAttendingController,
+    editPostPut: editPostPutController,
+    editPost: editPostController,
     attend: attendController,
     activity: activityController,
     new: newController,

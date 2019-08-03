@@ -71,6 +71,53 @@ module.exports = (dbPoolInstance) => {
         });
     }
 
+    let postedActivity = (activity, cookies, callback) => {
+        let query = "select * from activity where host_id = $1 order by event_date asc";
+
+        let values = [cookies.user_id];
+
+        dbPoolInstance.query(query, values, (error, result) => {
+
+            if( error ){
+                callback(error, null);
+
+            } else {
+                callback(null, result);
+             }
+        });
+    }
+
+    let submitEdit = (activity, Id, cookies, callback) => {
+        let query = "update activity set type = $1, name = $2, max_pax = $3, event_date= $4 where id = $5 and host_id = $6 returning *";
+        let values = [activity.type, activity.name, activity.max_pax, activity.event_date, Id, cookies.user_id];
+
+        dbPoolInstance.query(query, values, (error, result) => {
+
+            if( error ){
+                callback(error, null);
+
+            } else {
+                callback(null, result);
+             }
+        });
+    }
+
+    let editActivity = (Id, cookies, callback) => {
+        let query = "select * from activity where host_id = $1 and id = $2";
+
+        let values = [cookies.user_id, Id];
+
+        dbPoolInstance.query(query, values, (error, result) => {
+
+            if( error ){
+                callback(error, null);
+
+            } else {
+                callback(null, result);
+             }
+        });
+    }
+
 
     let activityOverview = (activity, callback) => {
         let query = "SELECT * FROM activity INNER JOIN users ON users.id = host_id WHERE active = true ORDER BY event_date ASC limit 6 ";
@@ -168,9 +215,12 @@ module.exports = (dbPoolInstance) => {
     showActivity,
     singleActivity,
     deleteAttending,
+    submitEdit,
+    editActivity,
     attendActivity,
     activityOverview,
     attending,
+    postedActivity,
     registerUser,
     loginUser,
   };

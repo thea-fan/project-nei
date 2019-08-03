@@ -64,7 +64,10 @@ header .overlay {
 .category-card{
 	height: 10rem;
 	margin: 10px;
+}
 
+.category-card h1{
+	font-size: 2rem;
 }
 
 .account-btn{

@@ -11,8 +11,11 @@ CREATE TABLE IF NOT EXISTS activity (
     type TEXT,
     name TEXT,
     max_pax INTEGER,
-    created_at DATE DEFAULT now(),
+    address TEXT,
+    postalCode INTEGER,
     event_date DATE,
+    start_time TIME,********
+    created_at DATE DEFAULT now(),
     active BOOLEAN DEFAULT true
 );
 

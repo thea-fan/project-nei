@@ -97,7 +97,7 @@ class Root extends React.Component {
                     </div>
                 </div>
                 <section class="col d-flex flex-wrap justify-content-around">
-                    {type}{type}{type}
+                    {type}
                 </section>
             </div>
         </Layout>

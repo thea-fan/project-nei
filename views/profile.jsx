@@ -36,6 +36,7 @@ class userProfile extends React.Component {
         post =  this.props.posted.map(activity =>{
             let postedURL = "/activity/" + activity.id;
             let editURL = "/activity/"+ activity.id + "/edit";
+            let deleteURL = "/activity/" + activity.id +"/delete?_method=DELETE";
             let eventDate = activity.event_date;
             let date = eventDate.getDate() + " " + months[eventDate.getMonth()];
 
@@ -44,6 +45,8 @@ class userProfile extends React.Component {
                     <a href={postedURL}>{date} - {activity.name}
                     </a>
                     <form action ={editURL} method ="GET"><button name = "activity_id" type="submit" class="myButton">Edit</button>
+                    </form>
+                    <form action ={deleteURL} method ="POST"><button type="submit" class="myButton">Delete Event</button>
                 </form>
                 </li>
             );
@@ -60,7 +63,7 @@ class userProfile extends React.Component {
                     <ul class="list-group">
                         {attend}
                     </ul>
-                    <h2>Activities posted by you</h2>
+                    <h2>Activities Hosted by you</h2>
                     <ul class="list-group">
                         {post}
                     </ul>

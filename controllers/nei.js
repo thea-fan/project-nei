@@ -120,6 +120,21 @@ module.exports = (db) => {
 
     };
 
+//app.DELETE (Update posted activities)
+    let  deletePostController = (request, response) => {
+       let activityId = parseInt(request.params.id);
+
+        db.nei.deletePost(activityId, request.cookies, (err, result) => {
+            if (err) {
+                response.send(err)
+
+            } else {
+                response.redirect("/profile");
+            }
+        });
+
+    };
+
 //app.PUT (Update posted activities)
     let editPostPutController = (request, response) => {
        let activityId = parseInt(request.params.id);
@@ -282,6 +297,7 @@ module.exports = (db) => {
     profile: profileController,
     home: homeController,
     deleteAttending: deleteAttendingController,
+    deletePost: deletePostController,
     editPostPut: editPostPutController,
     editPost: editPostController,
     attend: attendController,

@@ -62,16 +62,66 @@ header .overlay {
 }
 
 .category-card{
+	border-radius: 20px;
 	height: 10rem;
 	margin: 10px;
 }
 
-.category-card h1{
+.category-card p{
+	font-size: 1.5rem;
+	background-color: #ffffffc7;
+	border: 1px solid #ffffffc7;
+	border-radius: 20px;
+}
+
+.food{
+	background-image: url('https://downtowngallery.com.sg/images/uploads/concepts-social-kitchen-m-1.jpg')
+}
+
+.exercise{
+	background-image: url('https://media.timeout.com/images/105399514/630/472/image.jpg')
+}
+
+.pets{
+	background-image: url('https://trupanion.com/-/media/trupanion/images/hero/desktop/hero-dog-kitten-mobile.jpg')
+}
+
+.chill{
+	background-image: url('https://imgix.bustle.com/uploads/image/2019/1/18/c3def9ff-df29-4463-8c14-ad1bc89188e5-boar-game-for-large-groups.jpg?w=970&h=546&fit=crop&crop=faces&auto=format&q=70')
+}
+
+.request{
+	background-image: url('http://www.asiaone.com/sites/default/files/original_images/Apr2014/20140421_neighbours_bh.jpg')
+}
+
+.shopping{
+	background-image: url('https://www.visitsingapore.com/festivals-events-singapore/annual-highlights/great-singapore-sale/_jcr_content/par-carousel/carousel_detailpage/carousel/item_1.thumbnail.carousel-img.740.416.jpg')
+}
+
+.card-date{
+	font-size: 1.2rem;
+	text-transform: capitalize;
+	color: #27ada0;
+}
+
+.card-body {
+	height: 7rem;
+	text-transform: uppercase;
+	font-weight: bold;
+	padding-top: 8px !important;
+}
+
+.category-card h1 {
 	font-size: 2rem;
 }
 
-.account-btn{
+.account-btn {
 	margin: auto 1rem;
+}
+
+.badge-secondary {
+	background-color: #27ada0;
+	text-transform: uppercase;
 }
 
 
@@ -166,6 +216,8 @@ a.navbar-brand{
 	position:relative;
 	top:1px;
 }
+
+
 
 
 

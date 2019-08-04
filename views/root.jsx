@@ -4,41 +4,22 @@ var Layout = require('./components/rootLayout.jsx');
 class Root extends React.Component {
   render() {
 
-    if (this.props.status.loggedIn !== undefined ){
-        Layout = memberNav;
-    } else {
-        Layout = nonMemberNav;
-    }
-
-    let typeArray = [];
-    this.props.allActivities.map(activity => {
-        typeArray.push(activity.type);
-    });
-    typeArray = [...new Set(typeArray)];
-
-    const type = typeArray.map(type =>{
-        return(
-             <div class = "category-card col-3 card card--hasShadow card--hasShadowPlusHover eventCard justify-content-center text-center ">
-                <a href="#">
-                    <h1>{type}</h1>
-                </a>
-            </div>
-        )
-    });
-
     const activity = this.props.allActivities.map(activity =>{
+
+        let eventURL ="/activity/"+activity.id;
 
         let eventDate = activity.event_date;
         const months = ["Jan", "Feb", "Mar","Apr", "May", "Jun", "Jul", "Aug", "Sep", "Oct", "Nov", "Dec"];
-        let date = eventDate.getDate() + "-" + months[eventDate.getMonth()] + "-" + eventDate.getFullYear();
+        const day = ["Sunday", "Monday", "Tuesday", "Wednesday","Thursday", "Friday", "Saturday"];
+        let date = day[eventDate.getDay()] + ", " +eventDate.getDate() + " " + months[eventDate.getMonth()];
 
     return (
             <div class = "flex-item flex-item--shrink">
                  <div class = "card card--hasShadow card--hasShadowPlusHover eventCard exploreHome-nearByEvents exploreHome-eventCard buttonPersonality">
-                    <a href="#">
-                        <div class="card-header">{activity.type}</div>
-                        <div class="card-body">{date}<br/><br/>{activity.name}</div>
-                        <div class="card-footer">By: {activity.username}</div>
+                    <a href={eventURL}>
+                        <p class = "card-date m-0 p-2">{date}</p>
+                        <div class="card-body"><h3 class = "d-flex  align-items-center m-0">{activity.name}</h3>Hosted By: {activity.username}</div>
+                        <div class="card-footer"><button class="btn btn-outline-primary">I wanna go</button></div>
                     </a>
                 </div>
             </div>
@@ -103,7 +84,36 @@ class Root extends React.Component {
                     </div>
                 </div>
                 <section class="col d-flex flex-wrap justify-content-around">
-                    {type}{type}{type}
+                    <div class = "category-card food col-3 card card--hasShadow card--hasShadowPlusHover eventCard justify-content-end text-center ">
+                        <a href="#">
+                            <p>Food</p>
+                        </a>
+                    </div>
+                    <div class = "category-card exercise col-3 card card--hasShadow card--hasShadowPlusHover eventCard justify-content-end text-center ">
+                        <a href="#">
+                            <p>Exercise</p>
+                        </a>
+                    </div>
+                    <div class = "category-card pets col-3 card card--hasShadow card--hasShadowPlusHover eventCard justify-content-end text-center ">
+                        <a href="#">
+                            <p>Pets</p>
+                        </a>
+                    </div>
+                    <div class = "category-card chill col-3 card card--hasShadow card--hasShadowPlusHover eventCard justify-content-end text-center ">
+                        <a href="#">
+                            <p>Chill</p>
+                        </a>
+                    </div>
+                    <div class = "category-card request col-3 card card--hasShadow card--hasShadowPlusHover eventCard justify-content-end text-center ">
+                        <a href="#">
+                            <p>Request</p>
+                        </a>
+                    </div>
+                    <div class = "category-card shopping col-3 card card--hasShadow card--hasShadowPlusHover eventCard justify-content-end text-center ">
+                        <a href="#">
+                            <p>Shopping</p>
+                        </a>
+                    </div>
                 </section>
             </div>
         </Layout>

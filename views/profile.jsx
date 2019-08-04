@@ -5,6 +5,7 @@ class userProfile extends React.Component {
   render() {
     const months = ["Jan", "Feb", "Mar","Apr", "May", "Jun", "Jul", "Aug", "Sep", "Oct", "Nov", "Dec"];
 
+
     let attend = "";
     if (this.props.attending.length=== 0){
         attend = <li class="d-flex justify-content-between list-group-item">No events yet!<br/><form action = "/home"><button class="myButton"> Browse events </button></form></li>;

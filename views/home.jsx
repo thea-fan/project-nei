@@ -18,17 +18,20 @@ class Home extends React.Component {
 
         let eventDate = activity.event_date;
         const months = ["Jan", "Feb", "Mar","Apr", "May", "Jun", "Jul", "Aug", "Sep", "Oct", "Nov", "Dec"];
+        const days = ["Sun", "Mon", "Tue", "Wed","Thu", "Fri", "Sat"];
+        let day = days[eventDate.getDay()]
         let date = eventDate.getDate() + " " + months[eventDate.getMonth()];
 
         return (
             <li class="home-event-list">
                 <a href={eventURL}>
                     <div class="row">
-                        <div class="d-flex justify-content-center align-items-center col-2 text-uppercase font-weight-bold">
+                        <div class="d-flex text-center justify-content-center align-items-center col-2 text-uppercase font-weight-bold">
+                            {day} <br/>
                             {date}
                         </div>
                         <div class="col">
-                            <p class="text-uppercase font-weight-bold m-0">= {activity.type} =</p>
+                            <span class="badge badge-secondary">{activity.type}</span>
                             <p class="home-activity-name text-uppercase font-weight-bold m-0">{activity.name}</p>
                             <p class ="font-italic">Posted by: {activity.username}</p>
                         </div>

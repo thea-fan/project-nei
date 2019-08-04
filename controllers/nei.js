@@ -10,11 +10,6 @@ module.exports = (db) => {
    * ===========================================
    */
 
-//app.GET (register)
-    let registerController = (request, response) => {
-        response.render('register');
-    };
-
 //app.POST (register)
     let registerPostController = (request, response) => {
 
@@ -44,11 +39,6 @@ module.exports = (db) => {
                 }
             }
         });
-    };
-
-//app.GET (login)
-    let loginController = (request, response) => {
-        response.render('login');
     };
 
 //app.POST (login)
@@ -286,9 +276,7 @@ module.exports = (db) => {
    * ===========================================
    */
   return {
-    login: loginController,
     loginPost: loginPostController,
-    register: registerController,
     registerPost: registerPostController,
     profile: profileController,
     home: homeController,

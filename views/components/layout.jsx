@@ -42,6 +42,7 @@ class Layout extends React.Component {
                 <div class="col-12 footer-copyright text-center py-3">© 2019 Copy not righted
                     <a href="/"> nēi</a>
                 </div>
+                <script src="./script.js"/>
             </body>
         </html>
     )

@@ -1,5 +1,6 @@
 var React = require('react');
 var Layout = require('./components/rootLayout.jsx');
+var LoginRegister = require('./components/loginRegister.jsx');
 
 class Root extends React.Component {
   render() {
@@ -33,27 +34,25 @@ class Root extends React.Component {
                 <video playsinline="playsinline" autoplay="autoplay" muted="muted" loop="loop">
                     <source src="https://www.meetup.com/mu_static/en-US/video.dddafbfe.mp4" type="video/mp4"/>
                 </video>
+                <LoginRegister/>
                 <div class="container h-100">
                     <div class="d-flex h-100 text-center align-items-center">
                         <div class="w-100 text-white">
                             <h1 class="display-3">nei</h1>
+
                             <p class="lead mb-0">Neighbours by chance.<br/> Friends by choice.</p><br/>
-                            <div class="form-group row centered">
-                                <form className = 'account-btn' action = '/register' method ="GET">
-                                    <button type="submit" class="myButton">Register
-                                    </button>
-                                </form>
-                                <form className = 'account-btn' action = '/login' method ="GET">
-                                    <button type="submit" class="myButton">Login
-                                    </button>
-                                </form>
+                             <div class="form-group d-flex row justify-content-center">
+                            <button type="submit" class="myButton mx-3" data-toggle="modal" data-target="#register">
+                              Register
+                            </button>
+                            <button type="submit" class="myButton mx-3" data-toggle="modal" data-target="#login">
+                              Login
+                            </button>
                             </div>
                         </div>
                     </div>
                 </div>
             </header>
-
-
             <div class = "container">
                 <div class = "section-title row">
                     <div class="col-6">

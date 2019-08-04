@@ -1,4 +1,5 @@
 var React = require('react');
+var LoginRegister = require('./loginRegister.jsx');
 
 class rootLayout extends React.Component {
   render() {
@@ -19,7 +20,7 @@ class rootLayout extends React.Component {
             <body>
 
             <nav class="fixed-top navbar navbar-expand-lg navbar-light bg-light">
-            <a class="navbar-brand" href="/home"><div class="main-icon"/>nēi</a>
+            <a class="navbar-brand" href="/"><div class="main-icon"/>nēi</a>
                 <div class = "d-flex justify-content-evenly">
                 <ul class="navbar-nav">
                   <li class="nav-item">
@@ -28,21 +29,23 @@ class rootLayout extends React.Component {
                 </ul>
                 <ul class="navbar-nav">
                   <li class="nav-item">
-                    <a class="nav-link mr-4" href="/login">Login</a>
+                    <a class="nav-link mr-4" href="" data-toggle="modal" data-target="#login">Login</a>
                   </li>
                 </ul>
                 <ul class="navbar-nav">
                   <li class="nav-item">
-                    <a class="nav-link" href="/register">Register</a>
+                    <a class="nav-link" href="" data-toggle="modal" data-target="#register">Register</a>
                   </li>
                 </ul>
                 </div>
             </nav>
 
                 {this.props.children    }
+                <LoginRegister/>
                 <div class="col-12 footer-copyright text-center py-3">© 2019 Copy not righted
                     <a href="/"> nēi</a>
                 </div>
+                <script src="/script.js"></script>
             </body>
         </html>
     )

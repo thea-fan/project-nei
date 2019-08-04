@@ -25,9 +25,7 @@ module.exports = (app, allModels) => {
     app.get('/activity/:id', neiController.activity)
     app.get('/activity', neiController.home);
     app.post('/login', neiController.loginPost);
-    app.get('/login', neiController.login);
     app.post('/register', neiController.registerPost);
-    app.get('/register', neiController.register);
     app.get('/profile', neiController.profile);
     app.get('/home', neiController.home);
     app.get('/logout', neiController.logout);

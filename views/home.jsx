@@ -43,12 +43,17 @@ class Home extends React.Component {
 
     return (
         <Layout>
-           <div class = "container">
+            <div class="homepage-banner d-flex text-center align-items-center justify-content-center flex-column">
+                <h1 class="text-white mt-5">Join your neighbours</h1>
+                <input class="form-control homepage-searchbar" id="myInput" type="text" placeholder="Search for events by name, host, date, or category"/>
+                </div>
+                <div class="container mt-3">
+                <div class = "container">
                 <div class = "content">
-                    <p className ="latest">Upcoming Activities </p>
-                    <ul className = "event-listing-container">
+                    <ul id="myTable" className = "event-listing-container mx-4 ">
                         {activity}
                     </ul>
+                    </div>
                 </div>
             </div>
         </Layout>

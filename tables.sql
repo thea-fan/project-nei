@@ -2,7 +2,8 @@ CREATE TABLE IF NOT EXISTS users (
     id SERIAL PRIMARY KEY,
     username TEXT,
     password TEXT,
-    postalCode INTEGER
+    postalcode INTEGER,
+    created_at DATE DEFAULT now(),********
 );
 
 CREATE TABLE IF NOT EXISTS activity (
@@ -11,8 +12,10 @@ CREATE TABLE IF NOT EXISTS activity (
     type TEXT,
     name TEXT,
     max_pax INTEGER,
-    address TEXT,
-    postalCode INTEGER,
+    event_address TEXT, ********
+    event_postalcode INTEGER, ********
+    event_description TEXT,
+    event_photo TEXT, ********
     event_date DATE,
     start_time TIME,********
     created_at DATE DEFAULT now(),

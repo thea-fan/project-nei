@@ -31,6 +31,7 @@ module.exports = (db) => {
                     response.cookie('user_name', result.rows[0].username);
                     response.cookie('loggedIn', loggedInCookie);
                     response.cookie('user_id', user_id);
+                    response.cookie('user_postal', result.rows[0].postalcode);
 
                     response.redirect('/home');
 
@@ -61,6 +62,7 @@ module.exports = (db) => {
                     response.cookie('user_name', result.rows[0].username);
                     response.cookie('loggedIn', loggedInCookie);
                     response.cookie('user_id', user_id);
+                    response.cookie('user_postal', result.rows[0].postalcode);
 
                     response.redirect('/home');
 
@@ -135,24 +137,6 @@ module.exports = (db) => {
 
     };
 
-//app.GET (edit attending activities)
-    let editPostController = (request, response) => {
-       let activityId = parseInt(request.params.id);
-
-        db.nei.editActivity(activityId, request.cookies, (err, result) => {
-            if (err) {
-                response.send(err)
-
-            } else {
-                let data = {
-                    activityInfo: result.rows
-                }
-                response.render('editPosted', data);
-            }
-        });
-
-    };
-
 //app.GET (activity - view respective activity)
     let activityController = (request, response) => {
         let activityId = parseInt(request.params.id);
@@ -218,15 +202,6 @@ module.exports = (db) => {
         };
     };
 
-//app.GET (new - post new activity)
-    let newController = (request, response) => {
-        if( request.cookies.loggedIn === undefined ){
-            response.render('plsLogin');
-
-        }else{
-            response.render('newActivity');
-        }
-    };
 
 //app.POST (new - post new activity)
     let newPostController = (request, response) =>{
@@ -256,6 +231,7 @@ module.exports = (db) => {
                     let data = {
                         allActivities : result.rows
                     }
+                    console.log(data);
                     response.render('root', data);
                 }
             });
@@ -283,10 +259,10 @@ module.exports = (db) => {
     deleteAttending: deleteAttendingController,
     deletePost: deletePostController,
     editPostPut: editPostPutController,
-    editPost: editPostController,
+    //editPost: editPostController,
     attend: attendController,
     activity: activityController,
-    new: newController,
+    //new: newController,
     newPost: newPostController,
     logout: logoutController,
     root: rootController,

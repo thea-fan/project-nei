@@ -72,7 +72,7 @@ module.exports = (dbPoolInstance) => {
     }
 
     let postedActivity = (activity, cookies, callback) => {
-        let query = "select * from activity where host_id = $1 order by event_date asc";
+        let query = "select * from activity where host_id = $1 order by event_date asc;";
 
         let values = [cookies.user_id];
 
@@ -118,25 +118,8 @@ module.exports = (dbPoolInstance) => {
         });
     }
 
-    let editActivity = (Id, cookies, callback) => {
-        let query = "select * from activity where host_id = $1 and id = $2";
-
-        let values = [cookies.user_id, Id];
-
-        dbPoolInstance.query(query, values, (error, result) => {
-
-            if( error ){
-                callback(error, null);
-
-            } else {
-                callback(null, result);
-             }
-        });
-    }
-
-
     let activityOverview = (activity, callback) => {
-        let query = "SELECT * FROM activity INNER JOIN users ON users.id = host_id WHERE active = true ORDER BY event_date ASC limit 6 ";
+        let query = "SELECT activity.id, host_id, type, name, max_pax, created_at, event_date, active, username FROM activity INNER JOIN users ON users.id = host_id WHERE active = true ORDER BY event_date ASC limit 6 ";
 
         dbPoolInstance.query(query, (error, result) => {
 
@@ -233,7 +216,6 @@ module.exports = (dbPoolInstance) => {
     deleteAttending,
     submitEdit,
     deletePost,
-    editActivity,
     attendActivity,
     activityOverview,
     attending,

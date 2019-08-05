@@ -1,5 +1,6 @@
 body{
 	font-family: 'Hind Madurai', sans-serif;
+	background-color: #f7f7f7;
 }
 
 header {
@@ -59,6 +60,7 @@ header .overlay {
 
 .home-event-list{
 	border: 1px solid lightgray;
+	background-color: white;
 }
 
 .category-card{
@@ -116,14 +118,19 @@ header .overlay {
 }
 
 .homepage-banner{
-	height: 15rem;
+	height: 18rem;
   background-image: url('http://panoramic.hgzjromq.maxcdn-edge.com/wp-content/uploads/2017/04/ROCHER-CENTRE-1-900x300.jpg');
   background-size: cover;
+  background-position: center;
   box-shadow: inset 0 0 0 2000px rgba(0, 0, 0, 0.3);
 }
 
 .homepage-searchbar{
 	width: 50%;
+}
+
+.shorter-width{
+	width: 95%;
 }
 
 .badge-secondary {
@@ -149,6 +156,44 @@ header .overlay {
 
 .content{
 	margin-top: 53px;
+}
+
+.activity-banner{
+	height: 10rem;
+}
+
+.activity-banner h1{
+	font-size: 3.5rem;
+}
+
+.bordered{
+	border: 1px solid rgba(0,0,0,.125);
+}
+
+.underlined{
+	border-bottom: 1px solid rgba(0,0,0,.125);
+}
+
+.single-li{
+	font-weight: bold;
+	text-transform: uppercase;
+	font-style: italic;
+	border: 1px solid lightgray;
+	padding: 0.3rem;
+	text-align: center;
+	font-size: 1rem;
+	background-image: linear-gradient(to right, #4a736c, #3d8a82, #71b1a0);
+	/* -webkit-background-clip: text; */
+	-webkit-text-fill-color: white;
+}
+
+.attendance-button{
+	width: 80px;
+	height: 35px;
+}
+
+.new-input{
+	height: 2.5rem;
 }
 
 .bg-light{

@@ -19,7 +19,7 @@ class rootLayout extends React.Component {
 
             <body>
 
-            <nav class="fixed-top navbar navbar-expand-lg navbar-light bg-light">
+            <nav class="fixed-top d-flex justify-content-between navbar navbar-expand-lg navbar-light bg-light">
             <a class="navbar-brand" href="/"><div class="main-icon"/>nēi</a>
                 <div class = "d-flex justify-content-evenly">
                 <ul class="navbar-nav">

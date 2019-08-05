@@ -49,7 +49,7 @@ class Home extends React.Component {
                 </div>
                 <div class="container mt-3">
                 <div class = "container">
-                <div class = "content">
+                <div class = "content px-5">
                     <ul id="myTable" className = "event-listing-container mx-4 ">
                         {activity}
                     </ul>

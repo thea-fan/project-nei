@@ -231,7 +231,6 @@ module.exports = (db) => {
                     let data = {
                         allActivities : result.rows
                     }
-                    console.log(data);
                     response.render('root', data);
                 }
             });

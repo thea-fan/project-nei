@@ -20,7 +20,7 @@ class Root extends React.Component {
                     <a href={eventURL}>
                         <p class = "card-date m-0 p-2">{date}</p>
                         <div class="card-body"><h3 class = "d-flex  align-items-center m-0">{activity.name}</h3>Hosted By: {activity.username}</div>
-                        <div class="card-footer"><button class="btn btn-outline-primary">I wanna go</button></div>
+                        <div class="card-footer"><button class="btn btn-outline-primary">I WANNA GO!</button></div>
                     </a>
                 </div>
             </div>
@@ -38,9 +38,9 @@ class Root extends React.Component {
                 <div class="container h-100">
                     <div class="d-flex h-100 text-center align-items-center">
                         <div class="w-100 text-white">
-                            <h1 class="display-3">nei</h1>
+                            <h1 class="display-3">nēi</h1>
 
-                            <p class="lead mb-0">Neighbours by chance.<br/> Friends by choice.</p><br/>
+                            <p class="lead mb-0">Neighbours by chance.<br/> <span class = "font-italic">Friends by choice.</span></p><br/>
                              <div class="form-group d-flex row justify-content-center">
                             <button type="submit" class="myButton mx-3" data-toggle="modal" data-target="#register">
                               Register

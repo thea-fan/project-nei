@@ -31,7 +31,7 @@ class Home extends React.Component {
                             {date}
                         </div>
                         <div class="col">
-                            <span class="badge badge-secondary">{activity.type}</span>
+                            <span class="mt-3 badge badge-secondary">{activity.type}</span>
                             <p class="home-activity-name text-uppercase font-weight-bold m-0">{activity.name}</p>
                             <p class ="font-italic">Posted by: {activity.username}</p>
                         </div>

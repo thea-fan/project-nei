@@ -36,8 +36,8 @@ module.exports = (dbPoolInstance) => {
     }
 
     let loginUser = (userDetails, callback) => {
-        let text = "SELECT * from users where username = $1";
-        let values = [userDetails.username];
+        let text = "SELECT * from users where LOWER(username) = $1";
+        let values = [userDetails.username.toLowerCase()];
 
         dbPoolInstance.query(text, values, (error, result) => {
 
@@ -71,8 +71,40 @@ module.exports = (dbPoolInstance) => {
         });
     }
 
+    let otherAttending = (userId, callback) => {
+        let query = "select * from respondent inner join activity on activity_id = activity.id inner join users on host_id = users.id where respondent_id = $1 and active = true order by event_date asc";
+
+        let values = [userId];
+
+        dbPoolInstance.query(query, values, (error, result) => {
+
+            if( error ){
+                callback(error, null);
+
+            } else {
+                callback(null, result);
+             }
+        });
+    }
+
+    let otherPosted = (userId, callback) => {
+        let query = "select * from activity where host_id = $1 order by event_date asc";
+
+        let values = [userId];
+
+        dbPoolInstance.query(query, values, (error, result) => {
+
+            if( error ){
+                callback(error, null);
+
+            } else {
+                callback(null, result);
+             }
+        });
+    }
+
     let postedActivity = (activity, cookies, callback) => {
-        let query = "select * from activity where host_id = $1 order by event_date asc;";
+        let query = "select * from activity where host_id = $1 order by event_date asc";
 
         let values = [cookies.user_id];
 
@@ -104,8 +136,8 @@ module.exports = (dbPoolInstance) => {
     }
 
     let submitEdit = (activity, Id, cookies, callback) => {
-        let query = "update activity set type = $1, name = $2, max_pax = $3, event_date= $4 where id = $5 and host_id = $6 returning *";
-        let values = [activity.type, activity.name, activity.max_pax, activity.event_date, Id, cookies.user_id];
+        let query = "update activity set type = $1, name = $2, max_pax = $3, event_address= $4, event_postal= $5, event_description= $6, event_photo= $7, event_date= $8, start_time= $9, end_time= $10 where id = $11 and host_id = $12 returning *";
+        let values = [activity.type, activity.name, parseInt(activity.max_pax), activity.event_address, parseInt(activity.event_postal), activity.event_description, activity.event_photo, activity.event_date, activity.start_time, activity.end_time, Id, parseInt(cookies.user_id)];
 
         dbPoolInstance.query(query, values, (error, result) => {
 
@@ -119,7 +151,7 @@ module.exports = (dbPoolInstance) => {
     }
 
     let activityOverview = (activity, callback) => {
-        let query = "SELECT activity.id, host_id, type, name, max_pax, created_at, event_date, active, username FROM activity INNER JOIN users ON users.id = host_id WHERE active = true ORDER BY event_date ASC limit 6 ";
+        let query = "SELECT activity.start_time, activity.end_time, activity.id, host_id, type, name, max_pax, created_at, event_date, active, username FROM activity INNER JOIN users ON users.id = host_id WHERE active = true ORDER BY event_date ASC limit 6 ";
 
         dbPoolInstance.query(query, (error, result) => {
 
@@ -181,7 +213,7 @@ module.exports = (dbPoolInstance) => {
     }
 
     let showActivity = (activity, cookies, callback) => {
-        let query = "SELECT activity.id, host_id, type, name, max_pax, created_at, event_date, active, username FROM activity INNER JOIN users ON users.id = host_id WHERE active = true ORDER BY event_date ASC";
+        let query = "SELECT start_time, event_address, event_postal, end_time, activity.id, host_id, type, name, max_pax, created_at, event_date, active, username FROM activity INNER JOIN users ON users.id = host_id WHERE active = true ORDER BY event_date ASC";
 
         dbPoolInstance.query(query, (error, result) => {
 
@@ -195,8 +227,8 @@ module.exports = (dbPoolInstance) => {
     }
 
     let postActivity = (activity, cookies, callback) => {
-        let text = "INSERT INTO activity (host_id, type, name, max_pax, event_date) VALUES ($1, $2, $3, $4, $5) RETURNING *";
-        let values =[cookies.user_id, activity.type, activity.name, activity.max_pax, activity.event_date]
+        let text = "INSERT INTO activity (host_id, host_postal, type, name, max_pax, event_address, event_postal, event_description, event_photo, event_date, start_time, end_time) VALUES ($1, $2, $3, $4, $5, $6, $7, $8, $9, $10, $11, $12) RETURNING *";
+        let values =[parseInt(cookies.user_id), parseInt(cookies.user_postal), activity.type, activity.name, parseInt(activity.max_pax), activity.event_address, parseInt(activity.event_postal), activity.event_description, activity.event_photo, activity.event_date, activity.start_time, activity.end_time]
 
         dbPoolInstance.query(text, values, (error, result) => {
             if( error ){
@@ -209,6 +241,9 @@ module.exports = (dbPoolInstance) => {
     }
 
 
+
+
+
   return {
     postActivity,
     showActivity,
@@ -219,6 +254,8 @@ module.exports = (dbPoolInstance) => {
     attendActivity,
     activityOverview,
     attending,
+    otherAttending,
+    otherPosted,
     postedActivity,
     registerUser,
     loginUser,

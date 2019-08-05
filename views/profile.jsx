@@ -31,8 +31,8 @@ class userProfile extends React.Component {
                                     </div>
                                     <div class="modal-body">
                                         <form action ={deleteURL} method ="POST">
-                                            <p> Are you sure you are not going to attend <span class = "text-capitalize">'{activity.name}'</span> hosted by <span class = "text-uppercase">{activity.username}</span> anymore? </p>
-                                            <div class="modal-footer border-0 pb-0">
+                                            <p class ="text-center"> Are you sure you are not going to attend <br/><span class = "text-capitalize font-weight-bold">'{activity.name}'</span> <br/>hosted by <span class = "text-capitalize">{activity.username}</span> anymore? </p>
+                                            <div class="justify-content-center modal-footer border-0 pb-0">
                                                 <button type="button" class="btn btn-primary" data-dismiss="modal">No, I'm still attending</button>
                                                 <button type="submit" class="btn btn-danger">Not attending anymore</button>
                                             </div>
@@ -96,7 +96,7 @@ class userProfile extends React.Component {
                     <div class="modal-dialog modal-dialog-centered" role="document">
                         <div class="modal-content">
                             <div class="modal-header">
-                                <h3 class="modal-title font-weight-bold" id="exampleModalLongTitle">Host New Event</h3>
+                                <h3 class="modal-title font-weight-bold" id="exampleModalLongTitle">Edit your posted events</h3>
                                 <button type="button" class="close" data-dismiss="modal" aria-label="Close">
                                     <span aria-hidden="true">&times;</span>
                                 </button>
@@ -104,16 +104,34 @@ class userProfile extends React.Component {
                             <div class="modal-body">
                                 <form action ={editURL} method ="POST">
                                     <label class = "font-weight-bold">Activity Type</label>
-                                    <input type="text" class="p-0 pl-2 new-input mb-3" name="type" placeholder="Activity Type" defaultValue = {activity.type}/>
+                                    <input type="text" class="p-0 pl-2 new-input mb-3" name="type"defaultValue = {activity.type}/>
 
                                     <label class = "font-weight-bold">Activity Title</label>
-                                    <input type="text" class="p-0 pl-2 new-input mb-3" name="name" placeholder="Activity Title" defaultValue={activity.name}/>
+                                    <input type="text" class="p-0 pl-2 new-input mb-3" name="name" defaultValue={activity.name}/>
 
                                     <label class = "font-weight-bold">Max Pax</label>
-                                    <input type="text" class="p-0 pl-2 new-input mb-3" name="max_pax" placeholder="Max Pax" defaultValue={activity.max_pax}/>
+                                    <input type="text" class="p-0 pl-2 new-input mb-3" name="max_pax"defaultValue={activity.max_pax}/>
+
+                                    <label class = "font-weight-bold">Event Address</label>
+                                    <input type="text" class="p-0 pl-2 new-input mb-3" name="event_address" defaultValue={activity.event_address}/>
+
+                                    <label class = "font-weight-bold">Event Postal</label>
+                                    <input type="text" class="p-0 pl-2 new-input mb-3" name="event_postal" defaultValue={activity.event_postal}/>
+
+                                    <label class = "font-weight-bold">Event Desciption</label>
+                                    <input type="text" class="p-0 pl-2 new-input mb-3" name="event_description" defaultValue={activity.event_description}/>
+
+                                    <label class = "font-weight-bold">Event Photo</label>
+                                    <input type="text" class="p-0 pl-2 new-input mb-3" name="event_photo" defaultValue={activity.event_photo}/>
 
                                     <label class = "font-weight-bold">Date of Event</label>
                                     <input type="date" class="p-0 pl-2 new-input mb-3" name="event_date" Value={editDate}/>
+
+                                    <label class = "font-weight-bold">Start Time</label>
+                                    <input type="time" class="p-0 pl-2 new-input mb-3" name="start_time" defaultValue={activity.start_time}/>
+
+                                    <label class = "font-weight-bold">Ending Time</label>
+                                    <input type="time" class="p-0 pl-2 new-input mb-3" name="end_time" placeholder="Max Pax" defaultValue={activity.end_time}/>
                                     <div class="modal-footer border-0 pb-0">
                                         <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
                                         <button type="submit" class="btn btn-primary">Update</button>

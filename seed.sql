@@ -1,108 +1,64 @@
-insert into users (username, password, postalcode) values ('Joji','2914babd29ac15c88172f3c0599687fc3014c3a26e0ad6b5a6b2bfed32bd19e9', 469449);
+insert into users (username, password, postalcode) values ('joji','5640d01cb4d677e298f81f117e02b026ac085767567afea09227ef9628fd240d', 469449);
 
-insert into users (username, password, postalcode) values ('ppp','000', 400018);
+insert into users (username, password, postalcode) values ('fancypants','5640d01cb4d677e298f81f117e02b026ac085767567afea09227ef9628fd240d', 400018);
 
-insert into users (username, password, postalcode) values ('lll','000', 400018);
+insert into users (username, password, postalcode) values ('pacificwave','5640d01cb4d677e298f81f117e02b026ac085767567afea09227ef9628fd240d', 400018);
 
-insert into users (username, password, postalcode) values ('iii','000', 400020);
+insert into users (username, password, postalcode) values ('boilingriver','5640d01cb4d677e298f81f117e02b026ac085767567afea09227ef9628fd240d', 400020);
 
-insert into users (username, password, postalcode) values ('tltl','000', 469449);
+insert into users (username, password, postalcode) values ('immensegarden','5640d01cb4d677e298f81f117e02b026ac085767567afea09227ef9628fd240d', 469446);
 
-insert into users (username, password, postalcode) values ('trtr','000', 678989);
+insert into users (username, password, postalcode) values ('calmingeverglades','5640d01cb4d677e298f81f117e02b026ac085767567afea09227ef9628fd240d', 678989);
 
-insert into users (username, password, postalcode) values ('kkk','000', 544324);
+insert into users (username, password, postalcode) values ('troy','5640d01cb4d677e298f81f117e02b026ac085767567afea09227ef9628fd240d', 544324);
 
-insert into users (username, password, postalcode) values ('rara','000', 900013);
-
-
-
-insert into activity (host_id, type, name, max_pax, event_date) values (1, 'food', 'eat dinner together', 8, '2019-09-01');
-
-insert into activity (host_id, type, name, max_pax, event_date) values (1, 'food', 'cook italian tgt', 3, '2019-09-02');
-
-insert into activity (host_id, type, name, max_pax, event_date) values (2, 'chill', 'walk dogs tgt', 3, '2019-09-03');
-
-insert into activity (host_id, type, name, max_pax, event_date) values (3, 'chill', 'walk dogs tgt', 4, '2019-09-03');
-
-insert into activity (host_id, type, name, max_pax, event_date) values (4, 'food', 'eat dinner together', 3, '2019-09-01');
-
-insert into activity (host_id, type, name, max_pax, event_date) values (4, 'food', 'bbq together', 4, '2019-09-01');
-
-insert into activity (host_id, type, name, max_pax, event_date) values (2, 'food', 'bake muffins', 3, '2019-09-01');
-
-insert into activity (host_id, type, name, max_pax, event_date) values (1, 'chill', 'Netflix GOT', 8, '2019-09-01');
+insert into users (username, password, postalcode) values ('rihanna','5640d01cb4d677e298f81f117e02b026ac085767567afea09227ef9628fd240d', 544326);
 
 
 
+insert into activity (host_id, host_postal, type, name, max_pax, event_address, event_postal, event_description, event_photo, event_date, start_time, end_time) values (1, 469449, 'food', 'eat dinner together', 8, 'Bedok Road 292', 469449, 'DESCRIPTION', 'https://superfoodsrx.com/wp-content/uploads/2016/09/eattogethertoweb.jpg', '2019-09-01', '13:30', '15:45');
 
-insert into respondent (activity_id, respondent_id, respondent_name) values (1, 2, 'ppp');
+insert into activity (host_id, host_postal, type, name, max_pax, event_address, event_postal, event_description, event_photo, event_date, start_time, end_time) values (1, 469449, 'food', 'vinyasa flow class by our balcony', 3, 'Bedok Road 292', 469449, 'DESCRIPTION', 'https://superfoodsrx.com/wp-content/uploads/2016/09/eattogethertoweb.jpg', '2019-09-02', '18:00', '21:00');
 
-insert into respondent (activity_id, respondent_id, respondent_name) values (1, 3, 'lll');
+insert into activity (host_id, host_postal, type, name, max_pax, event_address, event_postal, event_description, event_photo, event_date, start_time, end_time) values (2, 400018, 'chill', 'Netflix latest season of Money Heist', 4, '18 Jalan Walkie #09-14', 400018, 'DESCRIPTION', 'https://superfoodsrx.com/wp-content/uploads/2016/09/eattogethertoweb.jpg', '2019-08-16', '20:30', '23:45');
 
-insert into respondent (activity_id, respondent_id, respondent_name) values (1, 4, 'iii');
+insert into activity (host_id, host_postal, type, name, max_pax, event_address, event_postal, event_description, event_photo, event_date, start_time, end_time) values (2, 400018, 'Pets', 'Dachshund owners gathering', 18, '18 Jalan Walkie #09-14', 400018, 'DESCRIPTION', 'https://superfoodsrx.com/wp-content/uploads/2016/09/eattogethertoweb.jpg', '2019-08-24', '08:30', '12:45');
 
-insert into respondent (activity_id, respondent_id, respondent_name) values (1, 5, 'tltl');
+insert into activity (host_id, host_postal, type, name, max_pax, event_address, event_postal, event_description, event_photo, event_date, start_time, end_time) values (4, 400020, 'childcare', 'Free to babysit for an afternoon', 2, '20 Jalan Walkie #12-03', 400020, 'DESCRIPTION', 'https://superfoodsrx.com/wp-content/uploads/2016/09/eattogethertoweb.jpg', '2019-09-09', '14:30', '18:00');
 
-insert into respondent (activity_id, respondent_id, respondent_name) values (2, 3, 'lll');
+insert into activity (host_id, host_postal, type, name, max_pax, event_address, event_postal, event_description, event_photo, event_date, start_time, end_time) values (4, 400020, 'food', 'vegan BBQ', 10, 'East Coast Park Pit 7A', 841020, 'DESCRIPTION', 'https://superfoodsrx.com/wp-content/uploads/2016/09/eattogethertoweb.jpg', '2019-08-27', '16:30', '21:00');
 
-insert into respondent (activity_id, respondent_id, respondent_name) values (2, 4, 'iii');
+insert into activity (host_id, host_postal, type, name, max_pax, event_address, event_postal, event_description, event_photo, event_date, start_time, end_time) values (7, 544324, 'chill', 'Mahjong oh Mahjong', 10, '324 Sengkang East Way', 544324, 'DESCRIPTION', 'https://superfoodsrx.com/wp-content/uploads/2016/09/eattogethertoweb.jpg', '2019-09-14', '20:00', '22:00');
 
-insert into respondent (activity_id, respondent_id, respondent_name) values (3, 1, 'Joji');
-
-insert into respondent (activity_id, respondent_id, respondent_name) values (3, 4, 'iii');
-
-insert into respondent (activity_id, respondent_id, respondent_name) values (4, 2, 'ppp');
-
-insert into respondent (activity_id, respondent_id, respondent_name) values (5, 2, 'ppp');
-
-insert into respondent (activity_id, respondent_id, respondent_name) values (5, 1, 'Joji');
-
-insert into respondent (activity_id, respondent_id, respondent_name) values (5, 4, 'iii');
-
-insert into respondent (activity_id, respondent_id, respondent_name) values (7, 3, 'lll');
-
-insert into respondent (activity_id, respondent_id, respondent_name) values (7, 4, 'iii');
-
-insert into respondent (activity_id, respondent_id, respondent_name) values (8, 3, 'lll');
+insert into activity (host_id, host_postal, type, name, max_pax, event_address, event_postal, event_description, event_photo, event_date, start_time, end_time) values (8, 544326, 'chill', 'Gong spa meditation', 2, '326 Sengkang East Way', 544326, 'DESCRIPTION', 'https://superfoodsrx.com/wp-content/uploads/2016/09/eattogethertoweb.jpg', '2019-08-08', '21:00', '23:00');
 
 
+insert into respondent (activity_id, respondent_id, respondent_name) values (1, 2, 'fancypants');
 
+insert into respondent (activity_id, respondent_id, respondent_name) values (2, 3, 'pacificwave');
 
-select * from respondent
-inner join activity on activity_id = activity.id
-inner join users on host_id = users.id;
+insert into respondent (activity_id, respondent_id, respondent_name) values (1, 4, 'boilingriver');
 
+insert into respondent (activity_id, respondent_id, respondent_name) values (1, 5, 'immensegarden');
 
+insert into respondent (activity_id, respondent_id, respondent_name) values (2, 8, 'rihanna');
 
+insert into respondent (activity_id, respondent_id, respondent_name) values (2, 7, 'troy');
 
+insert into respondent (activity_id, respondent_id, respondent_name) values (3, 1, 'joji');
 
-//***********************
-insert into activities (host_id, type, activityName, respondee_id) values (1, 'food', 'eat dinner together', 2);
+insert into respondent (activity_id, respondent_id, respondent_name) values (3, 8, 'rihanna');
 
-insert into activities (host_id, type, activityName, respondee_id) values (1, 'food', 'eat dinner together', 4);
+insert into respondent (activity_id, respondent_id, respondent_name) values (4, 1, 'joji');
 
-insert into activities (host_id, type, activityName, respondee_id) values (5, 'food', 'eat lunch together', 2);
+insert into respondent (activity_id, respondent_id, respondent_name) values (5, 2, 'fancypants');
 
-insert into activities (host_id, type, activityName, respondee_id) values (6, 'food', 'eat lunch together', 2);
+insert into respondent (activity_id, respondent_id, respondent_name) values (5, 1, 'joji');
 
+insert into respondent (activity_id, respondent_id, respondent_name) values (5, 7, 'troy');
 
-CREATE TABLE IF NOT EXISTS activity (
-    id SERIAL PRIMARY KEY,
-    host_id INTEGER,
-    type TEXT,
-    activityName TEXT,
-    respondee_id, INTEGER
-);
+insert into respondent (activity_id, respondent_id, respondent_name) values (7, 3, 'pacificwave');
 
+insert into respondent (activity_id, respondent_id, respondent_name) values (7, 5, 'immensegarden');
 
-//find user's hosted activities
-select distinct activityname, host_id from activities ;
-
-// find no. of attendees at each unique activity
-select count(*) from (select * from activities where activityname = 'eat dinner together' AND host_id=1) AS foo;
-
-//find unique activity for each type
-select distinct type,host_id, activityname from activities ;
-
-//find no. of unique activity for each type
-select count(*) from (select distinct activityname, host_id from activities) AS foo;
+insert into respondent (activity_id, respondent_id, respondent_name) values (8, 7, 'troy');

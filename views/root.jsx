@@ -8,7 +8,8 @@ class Root extends React.Component {
     const activity = this.props.allActivities.map(activity =>{
 
         let eventURL ="/activity/"+activity.id;
-
+        let startTime = activity.start_time;
+        let endTime = activity.end_time;
         let eventDate = activity.event_date;
         const months = ["Jan", "Feb", "Mar","Apr", "May", "Jun", "Jul", "Aug", "Sep", "Oct", "Nov", "Dec"];
         const day = ["Sunday", "Monday", "Tuesday", "Wednesday","Thursday", "Friday", "Saturday"];
@@ -18,8 +19,8 @@ class Root extends React.Component {
             <div class = "flex-item flex-item--shrink">
                  <div class = "card card--hasShadow card--hasShadowPlusHover eventCard exploreHome-nearByEvents exploreHome-eventCard buttonPersonality">
                     <a href={eventURL}>
-                        <p class = "card-date m-0 p-2">{date}</p>
-                        <div class="card-body"><h3 class = "d-flex  align-items-center m-0">{activity.name}</h3>Hosted By: {activity.username}</div>
+                        <p class = "card-date m-0 p-2"><span class = "font-weight-bold">{date}</span> <span class = "font-italic">{startTime} - {endTime}</span></p>
+                        <div class="card-body"><h4 class = "d-flex  align-items-center mb-2">{activity.name}</h4>Hosted By: {activity.username}</div>
                         <div class="card-footer"><button class="btn btn-outline-primary">I WANNA GO!</button></div>
                     </a>
                 </div>

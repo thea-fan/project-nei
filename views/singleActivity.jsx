@@ -19,15 +19,20 @@ class singleActivity extends React.Component {
     const months = ["Jan", "Feb", "Mar","Apr", "May", "Jun", "Jul", "Aug", "Sep", "Oct", "Nov", "Dec"];
     const day = ["Sunday", "Monday", "Tuesday", "Wednesday","Thursday", "Friday", "Saturday"];
     let date = day[eventDate.getDay()] + ", " +eventDate.getDate() + " " + months[eventDate.getMonth()];
+    let startTime = activity.start_time;
+    let endTime = activity.end_time;
+    let eventAddress = activity.event_address;
+    let eventPostal = activity.event_postal;
 
     let respondents = "";
     if (this.props.specificActivity[0].respondent_id === null) {
-        respondents = <li>No neighbour has responded yet. <br/> Why not be the first to do so?</li>;
+        respondents = <li>No neighbour <br/>has responded yet. <br/> Why not be the first to do so?</li>;
     }
     else if (this.props.specificActivity) {
         respondents = this.props.specificActivity.map(activity =>{
-            return (<li class ="single-li m-2">{activity.respondent_name}</li>);
+            return <li class ="single-li m-2">{activity.respondent_name}</li>;
         });
+
     }
 
     return (
@@ -35,15 +40,15 @@ class singleActivity extends React.Component {
             <Banner/>
            <div class = "container">
                 <div class = "col activity-banner d-flex flex-column justify-content-center border-bottom border-secondary">
-                    <h1 class = "text-uppercase font-weight-bold m-0">{activity.name}</h1>
-                    <h2 class="font-italic">Hosted by: {activity.username}</h2>
+                    <h1 class = "text-uppercase font-weight-bold mb-1">{activity.name}</h1>
+                    <h3 class="font-italic">Hosted by: {activity.username}</h3>
                 </div>
                 <div class = "row px-4">
                     <div class = "col-9 mt-4 pr-3">
                         <div>
-                        ACTIVITY IMAGE
+                        <img src={activity.event_photo}/>
                         </div>
-                        <h3>
+                        <h3 class="mt-3">
                             Description
                         </h3>
                         <p>
@@ -53,19 +58,24 @@ class singleActivity extends React.Component {
                         </p>
                         </div>
                         <div class ="col-3 mt-4">
-                        <h5 class = "font-weight-bold mb-3"><u>Date of event</u></h5><h4>{date}</h4>
-                        <h5 class = "font-weight-bold mt-5 mb-3"><u>Are you going?</u></h5>
                         <div class = "row">
+                        <i class="col-1 d-flex align-items-center p-0 far fa-clock"></i><h5 class ="col"><u>{date}<br/></u>Start time: {startTime}<br/>End time: {endTime}</h5>
+                       </div>
+                       <div class = "row mt-3">
+                        <i class="fas fa-map-marker-alt"></i><h5 class ="col">{eventAddress}<br/>{eventPostal}</h5>
+                       </div>
+                        <h5 class = " offset-1 font-weight-bold mt-3 mb-3"><u>Are you going?</u></h5>
+                        <div class = "offset-1 row">
                             <form action = {postURL} method ="POST">
-                                <button type="submit" class="attendance-button btn mx-2 myButton">✓</button>
+                                <button type="submit" class="attendance-button btn mr-2 myButton">✓</button>
                             </form>
                             <button class="attendance-button btn mx-2 myButton">✗</button>
                         </div>
-                        <h5 class="mt-5 mb-3"><u>
+                        <h5 class="offset-1 mt-4 mb-2"><u>
                             Attending Neighbours:
                         </u></h5>
                         <div>
-                        <ul class = "d-flex flex-wrap">{respondents}</ul>
+                        <ul class = "offset-1 d-flex flex-wrap">{respondents}</ul>
                         </div>
                     </div>
                 </div>

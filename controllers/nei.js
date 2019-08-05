@@ -53,21 +53,25 @@ module.exports = (db) => {
                 response.send(err)
 
             } else {
+                if (result){
+                    if(result.rows[0].password === hashedPassword) {
+                        let user_id = result.rows[0].id;
 
-                if(result.rows[0].password === hashedPassword) {
-                    let user_id = result.rows[0].id;
+                        let loggedInCookie = sha256( user_id + 'logged_id' + SALT );
 
-                    let loggedInCookie = sha256( user_id + 'logged_id' + SALT );
+                        response.cookie('user_name', result.rows[0].username);
+                        response.cookie('loggedIn', loggedInCookie);
+                        response.cookie('user_id', user_id);
+                        response.cookie('user_postal', result.rows[0].postalcode);
 
-                    response.cookie('user_name', result.rows[0].username);
-                    response.cookie('loggedIn', loggedInCookie);
-                    response.cookie('user_id', user_id);
-                    response.cookie('user_postal', result.rows[0].postalcode);
+                        response.redirect('/home');
 
-                    response.redirect('/home');
-
-                } else {
-                    response.render('wrongPwd');
+                    } else {
+                        response.render('wrongPwd');
+                    }
+                }
+                else {
+                    response.send("no such user");
                 }
             }
         });
@@ -172,6 +176,35 @@ module.exports = (db) => {
         });
     };
 
+//app.GET (other members profile)
+    let userController = (request, response) => {
+        let userId = parseInt(request.params.id);
+
+        db.nei.otherAttending(userId, (err, result) => {
+            if (err) {
+                response.send(err);
+
+            } else {
+                db.nei.otherPosted(userId, (err, result2) => {
+                    if (err) {
+                        response.send(err)
+
+                    }
+                    else {
+                        let data = {
+                            attending : result.rows,
+                            posted: result2.rows
+                        };
+
+                    console.log(data)
+                    response.render('otherUserProfile', data)
+                    }
+                });
+            }
+        });
+    };
+
+
 //app.GET (user profile)
     let profileController = (request, response) => {
 
@@ -258,7 +291,7 @@ module.exports = (db) => {
     deleteAttending: deleteAttendingController,
     deletePost: deletePostController,
     editPostPut: editPostPutController,
-    //editPost: editPostController,
+    user: userController,
     attend: attendController,
     activity: activityController,
     //new: newController,

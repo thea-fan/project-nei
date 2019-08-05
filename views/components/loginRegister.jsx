@@ -86,8 +86,27 @@ class LoginRegister extends React.Component {
                             <label class = "font-weight-bold">Max Pax</label>
                             <input type="text" class="p-0 pl-2 new-input mb-3" name="max_pax" placeholder="Max Pax"/>
 
+                            <label class = "font-weight-bold">Event Address</label>
+                            <input type="text" class="p-0 pl-2 new-input mb-3" name="event_address" placeholder="Address"/>
+
+                            <label class = "font-weight-bold">Event Address Postal Code (Please enter the numeric digits only)</label>
+                            <input type="text" class="p-0 pl-2 new-input mb-3" name="event_postal" placeholder="Postal Code"/>
+
                             <label class = "font-weight-bold">Date of Event</label>
                             <input type="date" class="p-0 pl-2 new-input mb-3" name="event_date"/>
+
+                            <label class = "font-weight-bold">Start Time</label>
+                            <input type="time" class="p-0 pl-2 new-input mb-3" name="start_time"/>
+
+                            <label class = "font-weight-bold">Ending Time</label>
+                            <input type="time" class="p-0 pl-2 new-input mb-3" name="end_time"/>
+
+                            <label class = "font-weight-bold">Event Description</label>
+                            <textarea type="text" name = "event_description" className="form-control p-0 pl-2 new-input mb-3" rows="3" placeholder="Describe event details"></textarea>
+
+                            <label class = "font-weight-bold">Event Photo</label>
+                            <input type="text" class="p-0 pl-2 new-input mb-3" name="event_photo" placeholder="Photo URL"/>
+
                             <div class="modal-footer border-0 pb-0">
                                 <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
                                 <button type="submit" class="btn btn-primary">Add New</button>

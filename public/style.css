@@ -43,6 +43,12 @@ header .overlay {
  z-index: 1;
 }
 
+.profile-header{
+	background-image: linear-gradient(to right, #E91E63, #FFC107, #FFEB3B);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+}
+
 .centered{
 	justify-content: center;
 	text-align: center;

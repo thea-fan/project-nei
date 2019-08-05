@@ -30,7 +30,8 @@ class singleActivity extends React.Component {
     }
     else if (this.props.specificActivity) {
         respondents = this.props.specificActivity.map(activity =>{
-            return <li class ="single-li m-2">{activity.respondent_name}</li>;
+            let userURL = "/user/"+activity.respondent_id;
+            return <a href={userURL}><li class ="single-li m-2">{activity.respondent_name}</li></a>;
         });
 
     }

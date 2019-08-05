@@ -195,9 +195,7 @@ module.exports = (db) => {
                             attending : result.rows,
                             posted: result2.rows
                         };
-
-                    console.log(data)
-                    response.render('otherUserProfile', data)
+                        response.render('otherUserProfile', data)
                     }
                 });
             }

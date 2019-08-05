@@ -32,7 +32,7 @@ class Home extends React.Component {
                         </div>
                         <div class="col">
                             <span class="mt-3 badge badge-secondary">{activity.type}</span>
-                            <p class="home-activity-name text-uppercase font-weight-bold m-0">{activity.name}</p>
+                            <p class="home-activity-name text-uppercase font-weight-bold mt-1 mb-1">{activity.name}</p>
                             <p class ="font-italic">Posted by: {activity.username}</p>
                         </div>
                     </div>

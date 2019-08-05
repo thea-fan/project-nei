@@ -142,7 +142,7 @@ class userProfile extends React.Component {
         <Layout>
              <div class = "container col-8 mt-5 pt-4">
                 <div class = "content bg-white bordered p-4 mt-4">
-                    <h1 class = "mb-4 underlined">Welcome to nēi, <span class = "text-capitalize">{this.props.userInfo.user_name}! </span></h1>
+                    <h1 class = "mb-4 underlined">Welcome to nēi, <span class = "text-capitalize font-italic">{this.props.userInfo.user_name}! </span></h1>
                     <div class ="row">
                         <div class ="col">
                             <h5 class="font-weight-bold">Home Postal Code:</h5><p>{this.props.userInfo.user_postal}</p>
@@ -158,7 +158,7 @@ class userProfile extends React.Component {
                     <ul class="list-group mt-3">
                         {attend}
                     </ul>
-                    <h4 class = "mt-5"><u>Events hosted by </u></h4>
+                    <h4 class = "mt-5"><u>Events hosted by you </u></h4>
                     <ul class="list-group mt-3">
                         {post}
                     </ul>

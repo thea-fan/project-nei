@@ -12,15 +12,17 @@ class userProfile extends React.Component {
         attend = <li class=" shorter-width d-flex justify-content-between list-group-item"><h5 class = "font-italic">No events yet!<br/></h5><form action = "/home"><button class="myButton new-input"> Find events now</button></form></li>;
     }
     else if (this.props.attending) {
-        attend = this.props.attending.map(activity =>{
+        attend = this.props.attending.map((activity,index) =>{
             let attendingURL = "/activity/" + activity.activity_id;
             let deleteURL = "/activity/"+ activity.activity_id + "?_method=DELETE";
             let eventDate = activity.event_date;
             let date = eventDate.getDate() + " " + months[eventDate.getMonth()];
+            let deleteModalId = "delete-attending-"+index;
+            let deleteModalButtonId = "#delete-attending-"+index;
 
             return (
                 <div>
-                    <div class="modal fade" id="delete-attending" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
+                    <div class="modal fade" id={deleteModalId} tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
                             <div class="modal-dialog modal-dialog-centered" role="document">
                                 <div class="modal-content">
                                     <div class="modal-header">
@@ -46,7 +48,7 @@ class userProfile extends React.Component {
                         <a href={attendingURL}>{date} - <span class = "text-capitalize">{activity.name}</span>
                         </a>
                         </h5>
-                        <button name = "activity_id" type="submit" class="myButton new-input" data-toggle="modal" data-target="#delete-attending">Change of Mind</button>
+                        <button name = "activity_id" type="submit" class="myButton new-input" data-toggle="modal" data-target={deleteModalButtonId}>Change of Mind</button>
                     </li>
                 </div>
             );
@@ -59,7 +61,7 @@ class userProfile extends React.Component {
         post = <li class="shorter-width d-flex justify-content-between list-group-item"><h5 class = "font-italic">You have not host any event before.<br/> How about adding one now?</h5><button class="myButton new-input" data-toggle="modal" data-target="#new"> Post an event </button></li>;
     }
     else if (this.props.posted) {
-        post =  this.props.posted.map(activity =>{
+        post =  this.props.posted.map((activity, index) =>{
             let postedURL = "/activity/" + activity.id;
             let editURL = "/activity/"+activity.id+ "/edit?_method=PUT";
             let deleteURL = "/activity/" + activity.id +"/delete?_method=DELETE";
@@ -67,10 +69,14 @@ class userProfile extends React.Component {
             let date = eventDate.getDate() + " " + months[eventDate.getMonth()];
             const editMonths = ["01", "02", "03","04", "05", "06", "07", "08", "09", "10", "11", "12"];
             let editDate = eventDate.getFullYear() + "-" + editMonths[eventDate.getMonth()] + "-" + eventDate.getDate();
+            let editModalId = "edit-"+index;
+            let editModalButtonId = "#edit-"+index;
+            let deleteModalId = "delete-"+index;
+            let deleteModalButtonId = "#delete-"+index;
 
             return (
                 <div>
-                    <div class="modal fade" id="delete" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
+                    <div class="modal fade" id={deleteModalId} tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
                         <div class="modal-dialog modal-dialog-centered" role="document">
                             <div class="modal-content">
                                 <div class="modal-header">
@@ -92,7 +98,7 @@ class userProfile extends React.Component {
                         </div>
                     </div>
 
-                    <div class="modal fade" id="edit" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
+                    <div class="modal fade" id={editModalId} tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
                     <div class="modal-dialog modal-dialog-centered" role="document">
                         <div class="modal-content">
                             <div class="modal-header">
@@ -146,8 +152,8 @@ class userProfile extends React.Component {
                         <a href={postedURL}>{date} - <span class = "text-capitalize">{activity.name}</span>
                         </a></h5>
                         <div class = "row">
-                        <button type="submit" class="myButton mx-2 new-input" data-toggle="modal" data-target="#edit">Edit</button>
-                        <button type="submit" class="myButton mx-2 new-input" data-toggle="modal" data-target="#delete">Delete Event</button>
+                        <button type="submit" class="myButton mx-2 new-input" data-toggle="modal" data-target={editModalButtonId}>Edit</button>
+                        <button type="submit" class="myButton mx-2 new-input" data-toggle="modal" data-target={deleteModalButtonId}>Delete Event</button>
                         </div>
                     </li>
                 </div>

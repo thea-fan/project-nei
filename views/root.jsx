@@ -80,39 +80,27 @@ class Root extends React.Component {
                         <h2 class = "d-flex align-items-center m-0"> Categories</h2>
                     </div>
                     <div class="col-6 d-flex align-items-center justify-content-end">
-                        <a href="#">See more</a>
+                        <a href="/home">See more</a>
                     </div>
                 </div>
                 <section class="col d-flex flex-wrap justify-content-around">
                     <div class = "category-card food col-3 card card--hasShadow card--hasShadowPlusHover eventCard justify-content-end text-center ">
-                        <a href="#">
                             <p>Food</p>
-                        </a>
                     </div>
                     <div class = "category-card exercise col-3 card card--hasShadow card--hasShadowPlusHover eventCard justify-content-end text-center ">
-                        <a href="#">
                             <p>Exercise</p>
-                        </a>
                     </div>
                     <div class = "category-card pets col-3 card card--hasShadow card--hasShadowPlusHover eventCard justify-content-end text-center ">
-                        <a href="#">
                             <p>Pets</p>
-                        </a>
                     </div>
                     <div class = "category-card chill col-3 card card--hasShadow card--hasShadowPlusHover eventCard justify-content-end text-center ">
-                        <a href="#">
                             <p>Chill</p>
-                        </a>
                     </div>
                     <div class = "category-card request col-3 card card--hasShadow card--hasShadowPlusHover eventCard justify-content-end text-center ">
-                        <a href="#">
                             <p>Request</p>
-                        </a>
                     </div>
                     <div class = "category-card shopping col-3 card card--hasShadow card--hasShadowPlusHover eventCard justify-content-end text-center ">
-                        <a href="#">
                             <p>Shopping</p>
-                        </a>
                     </div>
                 </section>
             </div>

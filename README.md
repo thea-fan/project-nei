@@ -1,70 +1,39 @@
-# Tweedr!!!
+# Seekr
+https://project-nei.herokuapp.com
 
-Let's make a cool new app called TWEEDR!! Not Twitter, geez...
+# Technologies used
+  - Express.js
+  - PostgreSQL
+  - Javascript
+  - HTML
+  - CSS
+  - Bootstrap
+  - Heroku
 
-### Wireframe!
+# General Approach
+- Identified the problem to solve and set user personas
+- Determined MVP and further features to determine scale & feasibility
+- Created wireframes to visualize the user journey + features that the user will actually use
+- Built the app, ran testing, gathered feedback
+- Delivered MVP features and added in bonus features
+- Deploy on Heroku, uploaded to Github
 
-![tweedr](https://git.generalassemb.ly/wdi-nyc-goat/LAB_Tweedr/raw/master/assets/tweedr.png)
-
-### Description
-If a user goes to the root route `/` they see all the tweets.
-
-Users can register and/or login in order to create a tweet.
-
-#### Getting Started
-Create each part of your app step by step.
-
-1. Create a tables.sql for your app. Don't worry too much about making it complete, since with a seed.sql file you can update your db easily.
-     - The basic tables.sql will have a users table and a tweets table.
-     - The app provides a basic user creation, so the basic app doesn't need anything more for users.
-
-2. Implement login of the user.
-
-3. Create the ability to make a tweet.
-
-4. Change the root route to display all tweets.
-
-
-#### Further
-Users can follow other users.
-
-#### Further
-Users can see just the tweets of the users that they follow.
-
-#### Further
-Users can see just the tweets of the users that follow them.
-
-#### Further
-Create user profile pages. `/users/1`
-
-#### Further
-Each reference on a page should be a link to that thing - (each tweet should link to a single tweet, each user should link to their profile, etc.)
-
-#### Further
-Validate that the user trying to register is using a name unique to the system.
-
-#### Further
-Make sure that users cannot "follow" people more than once.
-
-#### Further
-Add a new column to the db that tracks the time that the tweet was created.
-
-#### Further
-Add sort by date to each kind of tweet feed you made.
-
-#### Further
-Add the ability to edit a tweet.
+# Installation instructions for any dependencies
+- Git clone https://github.com/thea-fan/project-nei.git
+- cd project-nei
+- npm install
+- nodemon 
 
 
-#### Further
-Add the ability to delete things.
-
-#### Further
-Add bootstrap to your app.
-
-#### Further
-Add the ability to add a profile picture - see `input` `type=file` and `form` `enctype=multipart/formdata`
-
-#### Further
-Add the ability to tweet photos, also using the same profile pic upload as above.
-# project-nei
+# User Experience
+1. Problem Statement
+  - Neighbours are our most immediate point of contact beyond our own families. However, in this modern world, the interaction among neighbours is much limited. If given more opportunities to interact, the potential friendship and network that can be cultivated will be much beneficial to the community as a whole. 
+  - The current solution is either a Whatsapp group or a Facebook group for residents living in the same block or area. However, it is usually the same few individuals who are active in the group and with Facebook, there is also a concern of how much one wants their neighbour to know about their privacy. 
+2. User Persona
+  - Users who are tech-savvy and willing to socialize with neighbours (age: 6-55)
+3. User flow 
+  - Browse for events hosted by other neighbours 
+  - Host their own event 
+  - Check who are the attendees to their interested/hosted events
+  - Check the attendance/hosting activity of their neighbours
+  - RSVP accordingly
